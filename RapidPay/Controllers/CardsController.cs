@@ -20,11 +20,22 @@ namespace RapidPay.Controllers
 
         [HttpGet]
         [Route("Balance")]
-        public async Task<IActionResult> GetBalance([FromQuery] GetBalanceRequest request)
+        public async Task<IActionResult> GetBalanceAsync([FromQuery] GetBalanceRequest request)
         {
             var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
 
             var balance = await _cardBalanceLogic.GetBalanceAsync(int.Parse(userId.Value), request.CardNumber, request.From, request.To);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> CreateAsync([FromBody] CreateCardRequest request)
+        {
+            var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
+
+            await _cardBalanceLogic.CreateAsync(int.Parse(userId.Value), request.Number, request.Limit);
 
             return Ok();
         }

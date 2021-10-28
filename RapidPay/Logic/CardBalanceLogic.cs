@@ -16,6 +16,23 @@ namespace RapidPay.Logic
             _rapidPayContext = rapidPayContext;
         }
 
+        public async Task CreateAsync(int idUser, string cardNumber, decimal limit)
+        {
+            if (await IsCardNumberInUseAsync(idUser, cardNumber))
+                throw new CardNumberInUseException("Card number in use.");
+
+            var card = new Card()
+            {
+                Limit = limit,
+                IdUser = idUser,
+                Number = cardNumber,
+            };
+
+            _rapidPayContext.Attach(card);
+
+            await _rapidPayContext.SaveChangesAsync();
+        }
+
         public async Task<GetBalanceResponse> GetBalanceAsync(int idUser,
                                                               string cardNumber,
                                                               DateTime from,
@@ -28,10 +45,15 @@ namespace RapidPay.Logic
 
         private async Task ValidateCardNumberAsync(int idUser, string cardNumber)
         {
-            var card = await _rapidPayContext.Set<Card>().AnyAsync(a => a.Number == cardNumber && a.IdUser == idUser);
+            bool exists = await IsCardNumberInUseAsync(idUser, cardNumber);
 
-            if (!card)
+            if (!exists)
                 throw new InvalidCardException("Invalid card number.");
+        }
+
+        private async Task<bool> IsCardNumberInUseAsync(int idUser, string cardNumber)
+        {
+            return await _rapidPayContext.Set<Card>().AnyAsync(a => a.Number == cardNumber && a.IdUser == idUser);
         }
     }
 }

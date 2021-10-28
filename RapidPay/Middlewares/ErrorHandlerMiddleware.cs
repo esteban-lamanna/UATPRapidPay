@@ -29,6 +29,14 @@ namespace RapidPay.Middlewares
                 response.StatusCode = 400;
                 await response.WriteAsync(result);
             }
+            catch (CardNumberInUseException e)
+            {
+                var response = context.Response;
+                response.ContentType = "application/json";
+                var result = JsonSerializer.Serialize(new { message = e?.Message });
+                response.StatusCode = 400;
+                await response.WriteAsync(result);
+            }
             catch (Exception e)
             {
                 var response = context.Response;
