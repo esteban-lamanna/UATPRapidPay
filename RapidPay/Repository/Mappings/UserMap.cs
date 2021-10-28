@@ -12,6 +12,13 @@ namespace RapidPay.Repository.Mappings
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Email).HasColumnName("Email").IsRequired();
             builder.Property(a => a.Password).HasColumnName("Password").IsRequired();
+
+            builder.HasData(new User()
+            {
+                Email = "estebanlamanna@hotmail.com",
+                Password = "abcdef",
+                Id = 1
+            });
         }
     }
 }
