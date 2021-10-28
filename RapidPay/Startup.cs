@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RapidPay.Authentication;
+using RapidPay.Logic;
 using RapidPay.Repository;
 
 namespace RapidPay
@@ -19,10 +21,14 @@ namespace RapidPay
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<RapidPayContext>(opt =>
-            {
-                //    opt.UseInMemoryDatabase("RapidPay");
-            });
+            services.AddTransient<IUserLoginLogic, UserLoginLogic>();
+
+            services.AddDbContext<RapidPayContext>();
+
+            services.AddAuthentication("Basic")
+                    .AddScheme<BasicAuthenticationOptions, BasicAuthenticationHandler>("Basic", opt =>
+                    {
+                    });
 
             services.AddControllers();
         }
@@ -36,6 +42,8 @@ namespace RapidPay
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
