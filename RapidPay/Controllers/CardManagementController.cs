@@ -7,7 +7,7 @@ namespace RapidPay.Controllers
     [ApiController]
     [Authorize]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CardManagementController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()

@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20211028193851_one.cs" />
     <Compile Remove="Migrations\20211028193851_one.Designer.cs" />
+    <Compile Remove="Migrations\20211028205519_addedCardAndPaymentModels.cs" />
+    <Compile Remove="Migrations\20211028205519_addedCardAndPaymentModels.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +28,6 @@
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.20" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

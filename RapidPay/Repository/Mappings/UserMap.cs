@@ -13,6 +13,9 @@ namespace RapidPay.Repository.Mappings
             builder.Property(a => a.Email).HasColumnName("Email").IsRequired();
             builder.Property(a => a.Password).HasColumnName("Password").IsRequired();
 
+            builder.HasMany(a => a.Cards).WithOne(a => a.User);
+            builder.HasMany(a => a.Payments).WithOne(a => a.User);
+
             builder.HasData(new User()
             {
                 Email = "estebanlamanna@hotmail.com",
