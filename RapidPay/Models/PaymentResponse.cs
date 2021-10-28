@@ -1,0 +1,23 @@
+﻿using RapidPay.Logic.Entities;
+using System;
+
+namespace RapidPay.Models
+{
+    public class PaymentResponse
+    {
+        public DateTime Date { get; set; }
+        public decimal Amount { get; set; }
+
+        public static explicit operator PaymentResponse(Payment v)
+        {
+            if (v == null)
+                return null;
+
+            return new PaymentResponse()
+            {
+                Amount = v.Amount,
+                Date = v.Date
+            };
+        }
+    }
+}

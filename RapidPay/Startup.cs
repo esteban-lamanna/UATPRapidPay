@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RapidPay.Authentication;
 using RapidPay.Logic;
+using RapidPay.Middlewares;
 using RapidPay.Repository;
 
 namespace RapidPay
@@ -22,6 +23,7 @@ namespace RapidPay
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserLoginLogic, UserLoginLogic>();
+            services.AddTransient<ICardBalanceLogic, CardBalanceLogic>();
 
             services.AddDbContext<RapidPayContext>();
 
@@ -46,6 +48,8 @@ namespace RapidPay
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
