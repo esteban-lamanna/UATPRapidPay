@@ -17,7 +17,7 @@ namespace RapidPay.Logic.Entities
             if (Payments == null)
                 return Limit;
 
-            return Limit - Payments.Sum(a => a.Amount);
+            return Limit - Payments.Sum(a => a.Amount) - Payments.Sum(a => a.Fee);
         }
     }
 }
