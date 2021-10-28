@@ -12,12 +12,12 @@ namespace RapidPay.Logic.Entities
         public virtual User User { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
 
-        public decimal GetAvailable()
+        public decimal GetAvailable(IQueryable<Payment> payments)
         {
-            if (Payments == null)
+            if (payments == null)
                 return Limit;
 
-            return Limit - Payments.Sum(a => a.Amount) - Payments.Sum(a => a.Fee);
+            return Limit - payments.Sum(a => a.Amount) - payments.Sum(a => a.Fee);
         }
     }
 }

@@ -57,7 +57,7 @@ namespace RapidPay.Logic
             {
                 Limit = card.Limit,
                 Payments = payments.Select(a => (PaymentResponse)a),
-                Available = card.GetAvailable()
+                Available = card.GetAvailable(payments)
             };
         }
 
