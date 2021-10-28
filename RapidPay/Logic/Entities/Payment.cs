@@ -11,5 +11,6 @@ namespace RapidPay.Logic.Entities
         public virtual Card Card { get; set; }
         public int IdUser { get; set; }
         public virtual User User { get; set; }
+        public decimal Fee { get; set; }
     }
 }

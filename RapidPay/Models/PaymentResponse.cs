@@ -7,6 +7,7 @@ namespace RapidPay.Models
     {
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
+        public decimal Fee { get; set; }
 
         public static explicit operator PaymentResponse(Payment v)
         {
@@ -16,7 +17,8 @@ namespace RapidPay.Models
             return new PaymentResponse()
             {
                 Amount = v.Amount,
-                Date = v.Date
+                Date = v.Date,
+                Fee = v.Fee
             };
         }
     }

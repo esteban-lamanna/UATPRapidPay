@@ -12,9 +12,12 @@ namespace RapidPay.Logic
     public class CardBalanceLogic : ICardBalanceLogic
     {
         readonly RapidPayContext _rapidPayContext;
-        public CardBalanceLogic(RapidPayContext rapidPayContext)
+        readonly IFeeLogic _feeLogic;
+
+        public CardBalanceLogic(RapidPayContext rapidPayContext, IFeeLogic feeLogic)
         {
             _rapidPayContext = rapidPayContext;
+            _feeLogic = feeLogic;
         }
 
         public async Task CreateAsync(int idUser, string cardNumber, decimal limit)
@@ -54,7 +57,7 @@ namespace RapidPay.Logic
             {
                 Limit = card.Limit,
                 Payments = payments.Select(a => (PaymentResponse)a),
-                Available = card.GetAvailable()
+                Available = card.GetAvailable(payments)
             };
         }
 
@@ -77,7 +80,7 @@ namespace RapidPay.Logic
 
             var card = await GetCardAsync(idUser, cardNumber);
 
-            //validate limit
+            card.ValidateLimit(amount);
 
             var payment = new Payment()
             {
@@ -85,6 +88,7 @@ namespace RapidPay.Logic
                 Card = card,
                 IdUser = idUser,
                 Date = DateTime.UtcNow,
+                Fee = _feeLogic.GetFee()
             };
 
             _rapidPayContext.Attach(payment);
