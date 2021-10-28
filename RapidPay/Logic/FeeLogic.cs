@@ -24,9 +24,7 @@ namespace RapidPay.Logic
 
             _lastDate = DateTime.UtcNow;
 
-            var fee = _lastFee * GenerateDecimal();
-
-            return fee / 100;
+            return _lastFee * GenerateDecimal();
         }
 
         public decimal GenerateDecimal()
