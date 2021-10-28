@@ -4,6 +4,7 @@ using RapidPay.Logic.Exceptions;
 using RapidPay.Models;
 using RapidPay.Repository;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RapidPay.Logic
@@ -40,7 +41,21 @@ namespace RapidPay.Logic
         {
             await ValidateCardNumberAsync(idUser, cardNumber);
 
-            return new GetBalanceResponse();
+            var card = await GetCardAsync(idUser, cardNumber);
+
+            var payments = _rapidPayContext.Set<Payment>()
+                .Where(a => a.Date >= from)
+                .Where(a => a.Date <= to)
+                .Where(a => a.Card.Number == cardNumber)
+                .OrderByDescending(a => a.Date)
+                .AsNoTracking();
+
+            return new GetBalanceResponse()
+            {
+                Limit = card.Limit,
+                Payments = payments.Select(a => (PaymentResponse)a),
+                Available = card.GetAvailable()
+            };
         }
 
         private async Task ValidateCardNumberAsync(int idUser, string cardNumber)
@@ -54,6 +69,32 @@ namespace RapidPay.Logic
         private async Task<bool> IsCardNumberInUseAsync(int idUser, string cardNumber)
         {
             return await _rapidPayContext.Set<Card>().AnyAsync(a => a.Number == cardNumber && a.IdUser == idUser);
+        }
+
+        public async Task PayAsync(int idUser, string cardNumber, decimal amount)
+        {
+            await ValidateCardNumberAsync(idUser, cardNumber);
+
+            var card = await GetCardAsync(idUser, cardNumber);
+
+            //validate limit
+
+            var payment = new Payment()
+            {
+                Amount = amount,
+                Card = card,
+                IdUser = idUser,
+                Date = DateTime.UtcNow,
+            };
+
+            _rapidPayContext.Attach(payment);
+
+            await _rapidPayContext.SaveChangesAsync();
+        }
+
+        private async Task<Card> GetCardAsync(int idUser, string cardNumber)
+        {
+            return await _rapidPayContext.Set<Card>().FirstAsync(a => a.Number == cardNumber && a.IdUser == idUser);
         }
     }
 }

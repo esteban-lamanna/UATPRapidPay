@@ -26,7 +26,7 @@ namespace RapidPay.Controllers
 
             var balance = await _cardBalanceLogic.GetBalanceAsync(int.Parse(userId.Value), request.CardNumber, request.From, request.To);
 
-            return Ok();
+            return Ok(balance);
         }
 
         [HttpPost]
@@ -36,6 +36,17 @@ namespace RapidPay.Controllers
             var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
 
             await _cardBalanceLogic.CreateAsync(int.Parse(userId.Value), request.Number, request.Limit);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("{number}/pay")]
+        public async Task<IActionResult> CreateAsync(string number, [FromBody] PayWithCardRequest request)
+        {
+            var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
+
+            await _cardBalanceLogic.PayAsync(int.Parse(userId.Value), number, request.Amount);
 
             return Ok();
         }

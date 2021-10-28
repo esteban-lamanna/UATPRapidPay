@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace RapidPay.Logic.Entities
 {
@@ -10,5 +11,13 @@ namespace RapidPay.Logic.Entities
         public decimal Limit { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
+
+        public decimal GetAvailable()
+        {
+            if (Payments == null)
+                return Limit;
+
+            return Limit - Payments.Sum(a => a.Amount);
+        }
     }
 }
