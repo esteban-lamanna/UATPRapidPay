@@ -80,7 +80,7 @@ namespace RapidPay.Logic
 
             var card = await GetCardAsync(idUser, cardNumber);
 
-            //validate limit
+            card.ValidateLimit(amount);
 
             var payment = new Payment()
             {
