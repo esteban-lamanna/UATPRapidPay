@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using RapidPay.Logic.Entities;
+using System.Threading.Tasks;
 
 namespace RapidPay.Logic
 {
     public interface IUserLoginLogic
     {
-        Task<bool> Authenticate(string authUsername, string password);
+        Task<User> Authenticate(string authUsername, string password);
     }
 }

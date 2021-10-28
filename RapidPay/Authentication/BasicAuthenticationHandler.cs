@@ -45,14 +45,15 @@ namespace RapidPay.Authentication
             var authUsername = authSplit[0];
             var password = authSplit[1];
 
-            var validUser = _userLoginLogic.Authenticate(authUsername, password).GetAwaiter().GetResult();
+            var user = _userLoginLogic.Authenticate(authUsername, password).GetAwaiter().GetResult();
 
-            if (!validUser)
+            if (user == null)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid credentials"));
 
             var list = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, authUsername),
+                new Claim("Id", user.Id.ToString()),
             };
 
             var identity = new ClaimsIdentity(list, "Basic");

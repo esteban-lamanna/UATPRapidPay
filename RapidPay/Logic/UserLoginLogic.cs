@@ -14,10 +14,10 @@ namespace RapidPay.Logic
             _rapidPayContext = rapidPayContext;
         }
 
-        public async Task<bool> Authenticate(string authUsername, string password)
+        public async Task<User> Authenticate(string authUsername, string password)
         {
             return await _rapidPayContext.Set<User>()
-                                   .AnyAsync(a => a.Email == authUsername && a.Password == password);
+                                   .FirstOrDefaultAsync(a => a.Email == authUsername && a.Password == password);
         }
     }
 }
