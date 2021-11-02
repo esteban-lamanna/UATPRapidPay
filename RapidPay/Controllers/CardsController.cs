@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Domain.RapidPay.Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RapidPay.Logic;
-using RapidPay.Models;
+using Presentation.RapidPay.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RapidPay.Controllers
+namespace Presentation.RapidPay.Controllers
 {
     [ApiController]
     [Authorize]
@@ -17,6 +17,7 @@ namespace RapidPay.Controllers
         readonly ICardBalanceLogic _cardBalanceLogic;
         readonly IPaymentLogic _paymentLogic;
         readonly ILogger<CardsController> _logger;
+
         public CardsController(ICardBalanceLogic cardBalanceLogic, IPaymentLogic paymentLogic, ILogger<CardsController> logger)
         {
             _cardBalanceLogic = cardBalanceLogic;

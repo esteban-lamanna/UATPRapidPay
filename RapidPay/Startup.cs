@@ -1,14 +1,14 @@
+using Domain.RapidPay.Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RapidPay.Authentication;
-using RapidPay.Logic;
-using RapidPay.Middlewares;
-using RapidPay.Repository;
+using Persistence.RapidPay.Repository;
+using Presentation.RapidPay.Authentication;
+using Presentation.RapidPay.Middlewares;
 
-namespace RapidPay
+namespace Presentation.RapidPay
 {
     public class Startup
     {
@@ -19,15 +19,11 @@ namespace RapidPay
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IUserLoginLogic, UserLoginLogic>();
-            services.AddTransient<ICardBalanceLogic, CardBalanceLogic>();
-            services.AddSingleton<IFeeLogic, FeeLogic>();
-            services.AddTransient<IPaymentLogic, PaymentLogic>();
+            services.ConfigureLogic();
 
-            services.AddDbContext<RapidPayContext>();
+            services.ConfigureRepository();
 
             services.AddAuthentication("Basic")
                     .AddScheme<BasicAuthenticationOptions, BasicAuthenticationHandler>("Basic", opt =>

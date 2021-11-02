@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using RapidPay.Logic.Exceptions;
+﻿using Domain.RapidPay.Exceptions;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace RapidPay.Middlewares
+namespace Presentation.RapidPay.Middlewares
 {
     public class ErrorHandlerMiddleware
     {

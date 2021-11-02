@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Presentation.RapidPay.Models
+namespace Domain.RapidPay.DTO
 {
-    public class GetBalanceResponse
+    public class GetBalanceDTO
     {
-        public IEnumerable<PaymentResponse> Payments { get; set; }
+        public IEnumerable<GetPaymentDTO> Payments { get; set; }
         public decimal? Available { get; set; }
         public decimal? Limit { get; set; }
     }

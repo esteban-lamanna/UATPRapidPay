@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 
-namespace RapidPay.Authentication
+namespace Presentation.RapidPay.Authentication
 {
     public class BasicAuthenticationOptions : AuthenticationSchemeOptions
     {

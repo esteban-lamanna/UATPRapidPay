@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RapidPay.Models
+namespace Presentation.RapidPay.Models
 {
     public class CreateCardRequest
     {

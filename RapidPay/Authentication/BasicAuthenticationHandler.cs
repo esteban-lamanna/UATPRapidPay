@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Domain.RapidPay.Logic;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using RapidPay.Logic;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -10,7 +10,7 @@ using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace RapidPay.Authentication
+namespace Presentation.RapidPay.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>
     {
@@ -21,6 +21,7 @@ namespace RapidPay.Authentication
                                           UrlEncoder encoder,
                                           ISystemClock clock,
                                           IUserLoginLogic userLoginLogic)
+
         : base(options, logger, encoder, clock)
         {
             _userLoginLogic = userLoginLogic;
