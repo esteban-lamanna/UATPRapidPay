@@ -67,11 +67,11 @@ namespace RapidPay.Controllers
             {
                 try
                 {
-                    _paymentLogic.PayMultithreadingAsync(int.Parse(userId.Value), number, request.Amount).GetAwaiter().GetResult();
+                    _paymentLogic.PayMultithreading(int.Parse(userId.Value), number, request.Amount);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    _logger.LogWarning($"se ha producido una excepcion llamando, iteracion {a}");
+                    _logger.LogWarning(e, $"se ha producido una excepcion llamando, iteracion {a}");
                 }
             });
 

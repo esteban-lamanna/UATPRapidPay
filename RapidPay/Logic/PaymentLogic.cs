@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using RapidPay.Logic.Entities;
 using RapidPay.Repository;
 using System;
@@ -15,17 +16,19 @@ namespace RapidPay.Logic
         static readonly object lockPayment = new object();
         static readonly object lockPaymentMultithreading = new object();
         readonly IServiceProvider _serviceProvider;
+        readonly ILogger<PaymentLogic> _logger;
 
         public PaymentLogic(RapidPayContext rapidPayContext,
                             IFeeLogic feeLogic,
-                            IServiceProvider serviceProvider)
+                            IServiceProvider serviceProvider, ILogger<PaymentLogic> logger)
         {
             _rapidPayContext = rapidPayContext;
             _feeLogic = feeLogic;
             _serviceProvider = serviceProvider;
+            _logger = logger;
         }
 
-        public void PayMultithreadingAsync(int idUser, string cardNumber, decimal amount)
+        public void PayMultithreading(int idUser, string cardNumber, decimal amount)
         {
             using (var scope = _serviceProvider.CreateScope())
             {
@@ -35,21 +38,36 @@ namespace RapidPay.Logic
 
                     var card = context.Set<Card>().First(a => a.Number == cardNumber && a.IdUser == idUser);
 
-                    card.ValidateLimit(amount);
-
-                    var payment = new Payment()
-                    {
-                        Amount = amount,
-                        Card = card,
-                        IdUser = idUser,
-                        Date = DateTime.UtcNow,
-                        Fee = _feeLogic.GetFee()
-                    };
-
-                    context.Attach(payment);
-
-                    context.SaveChanges();
+                    Pay(idUser, amount, context, card);
                 }
+            }
+        }
+
+        private void Pay(int idUser, decimal amount, RapidPayContext context, Card card)
+        {
+            card.ValidateLimit(amount);
+
+            var payment = new Payment()
+            {
+                Amount = amount,
+                Card = card,
+                IdUser = idUser,
+                Date = DateTime.UtcNow,
+                Fee = _feeLogic.GetFee()
+            };
+
+            context.Attach(payment);
+
+            card.Available -= payment.Amount + payment.Fee;
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                _logger.LogWarning(e, $"concurrency exception");
+                throw;
             }
         }
 
@@ -59,20 +77,7 @@ namespace RapidPay.Logic
 
             lock (lockPayment)
             {
-                card.ValidateLimit(amount);
-
-                var payment = new Payment()
-                {
-                    Amount = amount,
-                    Card = card,
-                    IdUser = idUser,
-                    Date = DateTime.UtcNow,
-                    Fee = _feeLogic.GetFee()
-                };
-
-                _rapidPayContext.Attach(payment);
-
-                _rapidPayContext.SaveChanges();
+                Pay(idUser, amount, _rapidPayContext, card);
             }
         }
 
