@@ -28,6 +28,7 @@ namespace RapidPay.Logic
             var card = new Card()
             {
                 Limit = limit,
+                Available = limit,
                 IdUser = idUser,
                 Number = cardNumber,
             };
@@ -57,7 +58,7 @@ namespace RapidPay.Logic
             {
                 Limit = card.Limit,
                 Payments = payments.Select(a => (PaymentResponse)a),
-                Available = card.GetAvailable(payments)
+                Available = card.Available
             };
         }
 
