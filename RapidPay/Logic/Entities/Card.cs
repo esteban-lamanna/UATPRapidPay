@@ -24,6 +24,7 @@ namespace RapidPay.Logic.Entities
         internal void ValidateLimit(decimal amount)
         {
             var available = GetAvailable(Payments);
+
             if (amount > available)
                 throw new NoFundsException("Insuficient funds");
         }

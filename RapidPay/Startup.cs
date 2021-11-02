@@ -25,6 +25,7 @@ namespace RapidPay
             services.AddTransient<IUserLoginLogic, UserLoginLogic>();
             services.AddTransient<ICardBalanceLogic, CardBalanceLogic>();
             services.AddSingleton<IFeeLogic, FeeLogic>();
+            services.AddTransient<IPaymentLogic, PaymentLogic>();
 
             services.AddDbContext<RapidPayContext>();
 

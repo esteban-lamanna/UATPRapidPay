@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using RapidPay.Logic;
 using RapidPay.Models;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,9 +15,13 @@ namespace RapidPay.Controllers
     public class CardsController : ControllerBase
     {
         readonly ICardBalanceLogic _cardBalanceLogic;
-        public CardsController(ICardBalanceLogic cardBalanceLogic)
+        readonly IPaymentLogic _paymentLogic;
+        readonly ILogger<CardsController> _logger;
+        public CardsController(ICardBalanceLogic cardBalanceLogic, IPaymentLogic paymentLogic, ILogger<CardsController> logger)
         {
             _cardBalanceLogic = cardBalanceLogic;
+            _paymentLogic = paymentLogic;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -46,7 +52,28 @@ namespace RapidPay.Controllers
         {
             var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
 
-            await _cardBalanceLogic.PayAsync(int.Parse(userId.Value), number, request.Amount);
+            await _paymentLogic.PayAsync(int.Parse(userId.Value), number, request.Amount);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("{number}/paymultithreading")]
+        public async Task<IActionResult> PayMultithreadingAsync(string number, [FromBody] PayWithCardRequest request)
+        {
+            var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
+
+            Parallel.For(1, 10, (a, b) =>
+            {
+                try
+                {
+                    _paymentLogic.PayMultithreadingAsync(int.Parse(userId.Value), number, request.Amount).GetAwaiter().GetResult();
+                }
+                catch (Exception)
+                {
+                    _logger.LogWarning($"se ha producido una excepcion llamando, iteracion {a}");
+                }
+            });
 
             return Ok();
         }

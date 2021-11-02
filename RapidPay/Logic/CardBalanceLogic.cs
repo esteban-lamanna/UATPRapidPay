@@ -74,28 +74,6 @@ namespace RapidPay.Logic
             return await _rapidPayContext.Set<Card>().AnyAsync(a => a.Number == cardNumber && a.IdUser == idUser);
         }
 
-        public async Task PayAsync(int idUser, string cardNumber, decimal amount)
-        {
-            await ValidateCardNumberAsync(idUser, cardNumber);
-
-            var card = await GetCardAsync(idUser, cardNumber);
-
-            card.ValidateLimit(amount);
-
-            var payment = new Payment()
-            {
-                Amount = amount,
-                Card = card,
-                IdUser = idUser,
-                Date = DateTime.UtcNow,
-                Fee = _feeLogic.GetFee()
-            };
-
-            _rapidPayContext.Attach(payment);
-
-            await _rapidPayContext.SaveChangesAsync();
-        }
-
         private async Task<Card> GetCardAsync(int idUser, string cardNumber)
         {
             return await _rapidPayContext.Set<Card>().FirstAsync(a => a.Number == cardNumber && a.IdUser == idUser);
