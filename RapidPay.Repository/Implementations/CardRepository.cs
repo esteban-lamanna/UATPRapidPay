@@ -1,14 +1,12 @@
 ﻿namespace Persistence.RapidPay.Repository
 {
-    public class PaymentRepository : IPaymentRepository
+    public class CardRepository : ICardRepository
     {
         readonly RapidPayContext _rapidPayContext;
 
-        public PaymentRepository(RapidPayContext rapidPayContext)
+        public CardRepository(RapidPayContext rapidPayContext)
         {
             _rapidPayContext = rapidPayContext;
         }
-
-
     }
 }

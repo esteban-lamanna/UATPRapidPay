@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
 
 namespace Persistence.RapidPay.Repository
 {
     public class RapidPayContext : DbContext
     {
-        public object HostBuilderExtensions { get; private set; }
-
         readonly IConfiguration _configuration;
 
         public RapidPayContext(DbContextOptions<RapidPayContext> options, IConfiguration configuration)
@@ -20,7 +17,9 @@ namespace Persistence.RapidPay.Repository
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("RapidPay"));
+            var assembly = typeof(RapidPayContext).Assembly;
+
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

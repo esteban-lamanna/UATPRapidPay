@@ -23,7 +23,7 @@ namespace Presentation.RapidPay
         {
             services.ConfigureLogic();
 
-            services.ConfigureRepository();
+            services.ConfigureRepository(Configuration);
 
             services.AddAuthentication("Basic")
                     .AddScheme<BasicAuthenticationOptions, BasicAuthenticationHandler>("Basic", opt =>
