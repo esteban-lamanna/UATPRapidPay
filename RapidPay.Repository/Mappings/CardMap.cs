@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistence.RapidPay.Repository.Mappings
+namespace Drivers.RapidPay.Repository.Mappings
 {
     public class CardMap : IEntityTypeConfiguration<Card>
     {

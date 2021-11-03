@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Persistence.RapidPay.Repository;
+using Drivers.RapidPay.Repository;
 
 namespace RapidPay.Migrations
 {

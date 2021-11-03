@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Persistence.RapidPay.Repository
+namespace Drivers.RapidPay.Repository
 {
     public class RapidPayContext : DbContext
     {

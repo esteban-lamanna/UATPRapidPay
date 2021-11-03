@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RapidPay.Exceptions\Domain.RapidPay.Exceptions.csproj" />
+    <ProjectReference Include="..\RapidPay.Entities\Domain.RapidPay.Entities.csproj" />
   </ItemGroup>
 
 </Project>

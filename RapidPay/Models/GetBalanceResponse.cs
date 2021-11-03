@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Presentation.RapidPay.Models
+namespace InterfaceAdapters.RapidPay.Models
 {
     public class GetBalanceResponse
     {

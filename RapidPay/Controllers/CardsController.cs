@@ -1,13 +1,13 @@
 ﻿using Domain.RapidPay.Logic;
+using InterfaceAdapters.RapidPay.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Presentation.RapidPay.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Presentation.RapidPay.Controllers
+namespace InterfaceAdapters.RapidPay.Controllers
 {
     [ApiController]
     [Authorize]

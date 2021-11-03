@@ -1,6 +1,6 @@
 ﻿using Domain.RapidPay.Entities;
 using System;
-namespace Presentation.RapidPay.Models
+namespace InterfaceAdapters.RapidPay.Models
 {
     public class PaymentResponse
     {

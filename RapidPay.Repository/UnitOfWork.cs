@@ -1,7 +1,7 @@
 ﻿using Domain.RapidPay.Entities;
 using System.Threading.Tasks;
 
-namespace Persistence.RapidPay.Repository
+namespace Drivers.RapidPay.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

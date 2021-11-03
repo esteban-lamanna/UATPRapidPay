@@ -10,7 +10,7 @@ using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Presentation.RapidPay.Authentication
+namespace InterfaceAdapters.RapidPay.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>
     {

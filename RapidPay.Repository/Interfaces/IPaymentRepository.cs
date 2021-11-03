@@ -1,4 +1,4 @@
-﻿namespace Persistence.RapidPay.Repository
+﻿namespace Drivers.RapidPay.Repository
 {
     public interface IPaymentRepository
     {

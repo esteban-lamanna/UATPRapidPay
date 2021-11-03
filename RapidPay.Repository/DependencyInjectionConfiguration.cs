@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Persistence.RapidPay.Repository
+namespace Drivers.RapidPay.Repository
 {
     public static class DependencyInjectionConfiguration
     {
-        public static void ConfigureRepository(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureRepository(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<RapidPayContext>();
 
@@ -14,6 +14,8 @@ namespace Persistence.RapidPay.Repository
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            return services;
         }
     }
 }
