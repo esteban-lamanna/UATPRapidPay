@@ -9,6 +9,7 @@ namespace Domain.RapidPay.UseCasesPorts
         {
             services.AddScoped<ICreateCardInputPort, CreateCardInteractor>();
             services.AddScoped<IGetAllCardsInputPort, GetAllCardsInteractor>();
+            services.AddScoped<ILoginUserInputPort, LoginUserInteractor>();
 
             return services;
         }

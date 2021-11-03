@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace InterfaceAdapters.RapidPay.Middlewares
+namespace Drivers.RapidPay.Middlewares
 {
     public class ErrorHandlerMiddleware
     {

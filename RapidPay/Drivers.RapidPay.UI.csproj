@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -24,12 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain.RapidPay.Logic\Domain.RapidPay.Logic.csproj" />
-    <ProjectReference Include="..\Domain.RapidPay.UseCases\Domain.RapidPay.UseCases.csproj" />
-    <ProjectReference Include="..\Presentation.RapidPay.Presenters\InterfaceAdapters.RapidPay.Presenters.csproj" />
+    <ProjectReference Include="..\InterfaceAdapters.IoC\InterfaceAdapters.RapidPay.IoC.csproj" />
     <ProjectReference Include="..\RapidPay.Entities\Domain.RapidPay.Entities.csproj" />
     <ProjectReference Include="..\RapidPay.Exceptions\Domain.RapidPay.Exceptions.csproj" />
-    <ProjectReference Include="..\RapidPay.Repository\Drivers.RapidPay.Repository.csproj" />
   </ItemGroup>
 
 

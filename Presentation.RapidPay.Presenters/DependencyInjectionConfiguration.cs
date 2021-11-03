@@ -9,6 +9,8 @@ namespace InterfaceAdapters.RapidPay.Presenters
         {
             services.AddScoped<ICreateCardOutputPort, CreateCardPresenter>();
             services.AddScoped<IGetAllCardsOutputPort, GetAllCardsPresenter>();
+            services.AddScoped<ILoginUserOutputPort, LoginUserPresenter>();
+
             return services;
         }
     }

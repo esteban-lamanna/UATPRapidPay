@@ -1,4 +1,6 @@
-﻿using Domain.RapidPay.Logic;
+﻿using Domain.RapidPay.DTO;
+using Domain.RapidPay.UseCasesPorts;
+using InterfaceAdapters.RapidPay.Presenters;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -10,21 +12,24 @@ using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace InterfaceAdapters.RapidPay.Authentication
+namespace Drivers.RapidPay.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>
     {
-        readonly IUserLoginLogic _userLoginLogic;
+        readonly ILoginUserInputPort _loginUserInputPort;
+        readonly ILoginUserOutputPort _loginUserOutputPort;
 
         public BasicAuthenticationHandler(IOptionsMonitor<BasicAuthenticationOptions> options,
                                           ILoggerFactory logger,
                                           UrlEncoder encoder,
                                           ISystemClock clock,
-                                          IUserLoginLogic userLoginLogic)
+                                          ILoginUserInputPort loginUserInputPort,
+                                          ILoginUserOutputPort loginUserOutputPort)
 
         : base(options, logger, encoder, clock)
         {
-            _userLoginLogic = userLoginLogic;
+            _loginUserInputPort = loginUserInputPort;
+            _loginUserOutputPort = loginUserOutputPort;
         }
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -46,15 +51,23 @@ namespace InterfaceAdapters.RapidPay.Authentication
             var authUsername = authSplit[0];
             var password = authSplit[1];
 
-            var user = _userLoginLogic.Authenticate(authUsername, password).GetAwaiter().GetResult();
+            _loginUserInputPort.HandleAsync(new LoginUserDTO()
+            {
+                Password = password,
+                Username = authUsername
+            })
+                .GetAwaiter()
+                .GetResult();
 
-            if (user == null)
+            var userDto = ((IPresenter<UserDTO>)_loginUserOutputPort).Content;
+
+            if (userDto == null)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid credentials"));
 
             var list = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, authUsername),
-                new Claim("Id", user.Id.ToString()),
+                new Claim("Id", userDto.Id.ToString()),
             };
 
             var identity = new ClaimsIdentity(list, "Basic");

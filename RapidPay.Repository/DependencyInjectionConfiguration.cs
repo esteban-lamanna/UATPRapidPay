@@ -13,7 +13,7 @@ namespace Drivers.RapidPay.Repository
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserLoginRepository, UserLoginRepository>();
 
             return services;
         }
