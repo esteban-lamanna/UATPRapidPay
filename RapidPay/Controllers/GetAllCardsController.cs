@@ -1,6 +1,5 @@
 ﻿using Domain.RapidPay.DTO;
 using Domain.RapidPay.UseCasesPorts;
-using Drivers.RapidPay.Models;
 using InterfaceAdapters.RapidPay.Presenters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +24,7 @@ namespace Drivers.RapidPay.UI
         }
 
         [Route("")]
-        public async Task<IActionResult> GetAllAsync([FromBody] CreateCardRequest request)
+        public async Task<IActionResult> GetAllAsync()
         {
             await _getAllCardInputPort.HandleAsync();
 
