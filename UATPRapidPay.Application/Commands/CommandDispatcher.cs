@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
+using UATPRapidPay.Shared;
 
 namespace UATPRapidPay.Application.Commands
 {
@@ -16,7 +17,7 @@ namespace UATPRapidPay.Application.Commands
         {
             using var scope = _serviceScopeFactory.CreateScope();
 
-            var handler = scope.ServiceProvider.GetRequiredService<T>();
+            var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<T>>();
 
             await handler.HandleAsync(command);
         }
