@@ -1,7 +1,6 @@
 ﻿namespace UATPRapidPay.Infrastructure
 {
-    public class Class1
+    internal interface ICardRepository
     {
-
     }
 }

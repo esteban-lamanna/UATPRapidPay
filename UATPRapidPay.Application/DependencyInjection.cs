@@ -12,12 +12,12 @@ namespace UATPRapidPay.Application
             return services;
         }
 
-        public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
+        private static IServiceCollection AddCommandHandlers(this IServiceCollection services)
         {
             return services;
         }
 
-        public static IServiceCollection AddCommandDispatcher(this IServiceCollection services)
+        private static IServiceCollection AddCommandDispatcher(this IServiceCollection services)
         {
             services.AddTransient<ICommandDispatcher, CommandDispatcher>();
             return services;

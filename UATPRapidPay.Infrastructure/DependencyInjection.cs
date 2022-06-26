@@ -6,7 +6,7 @@ namespace UATPRapidPay.Infrastructure
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-
+            services.AddTransient<ICardRepository, CardRepository>();
             return services;
         }
     }
