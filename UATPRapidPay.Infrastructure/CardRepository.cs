@@ -1,4 +1,4 @@
-﻿namespace UATPRapidPay.Infrastructure
+﻿namespace UATPRapidPay.Card.Infrastructure
 {
     internal class CardRepository : ICardRepository
     {

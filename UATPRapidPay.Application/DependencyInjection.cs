@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using UATPRapidPay.Application.Commands;
+using UATPRapidPay.Card.Application.Commands;
 
-namespace UATPRapidPay.Application
+namespace UATPRapidPay.Card.Application
 {
     public static class DependencyInjection
     {

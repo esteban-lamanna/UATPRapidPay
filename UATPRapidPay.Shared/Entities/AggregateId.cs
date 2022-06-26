@@ -1,6 +1,6 @@
 ﻿namespace UATPRapidPay.Shared.Entities
 {
-    internal class AggregateId
+    public class AggregateId
     {
     }
 }

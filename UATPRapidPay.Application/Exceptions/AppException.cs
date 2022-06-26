@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UATPRapidPay.Application.Exceptions
+namespace UATPRapidPay.Card.Application.Exceptions
 {
     internal abstract class AppException : Exception
     {

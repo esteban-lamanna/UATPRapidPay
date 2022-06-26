@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace UATPRapidPay.Application.Commands
+namespace UATPRapidPay.Card.Application.Commands
 {
     public interface ICommandDispatcher
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace UATPRapidPay.Api
+namespace UATPRapidPay.Card.Api
 {
     public class Program
     {

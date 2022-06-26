@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace UATPRapidPay.Api.Controllers
+namespace UATPRapidPay.Card.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

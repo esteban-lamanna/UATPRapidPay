@@ -1,6 +1,6 @@
 ﻿using UATPRapidPay.Shared.Entities;
 
-namespace UATPRapidPay.Domain.Entities
+namespace UATPRapidPay.Card.Domain.Entities
 {
     internal class Card : AggregateRoot
     {

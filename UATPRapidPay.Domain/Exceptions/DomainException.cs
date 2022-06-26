@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UATPRapidPay.Domain.Exceptions
+namespace UATPRapidPay.Card.Domain.Exceptions
 {
     internal abstract class DomainException : Exception
     {
