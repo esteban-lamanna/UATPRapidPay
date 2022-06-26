@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Domain", "RapidPayFolder\Card\UATPRapidPay.Card.Domain\UATPRapidPay.Card.Domain.csproj", "{4C83678E-D349-46F6-BE28-36702CF7BABF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Infrastructure", "RapidPayFolder\Card\UATPRapidPay.Card.Infrastructure\UATPRapidPay.Card.Infrastructure.csproj", "{B8373646-D9C5-4604-8DEF-8B9F2BB940E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Infrastructure.SqlServer", "RapidPayFolder\Card\UATPRapidPay.Card.Infrastructure\UATPRapidPay.Card.Infrastructure.SqlServer.csproj", "{B8373646-D9C5-4604-8DEF-8B9F2BB940E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

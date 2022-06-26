@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace UATPRapidPay.Card.Infrastructure
+namespace UATPRapidPay.Card.Infrastructure.SqlServer
 {
     public static class DependencyInjection
     {
