@@ -3,7 +3,7 @@
 namespace UATPRapidPay.Shared
 {
     public interface ICommandHandler<T>
-        where T : class
+        where T : class, ICommand
     {
         Task HandleAsync(T command);
     }

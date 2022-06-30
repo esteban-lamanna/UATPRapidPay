@@ -13,7 +13,7 @@ namespace UATPRapidPay.Card.Application.Commands
             _serviceScopeFactory = serviceScopeFactory;
         }
 
-        public async Task SendAsync<T>(T command) where T : class
+        public async Task SendAsync<T>(T command) where T : class, ICommand
         {
             using var scope = _serviceScopeFactory.CreateScope();
 

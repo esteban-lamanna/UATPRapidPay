@@ -1,10 +1,22 @@
-﻿namespace UATPRapidPay.Card.Domain.ValueObjects
+﻿using UATPRapidPay.Card.Domain.Exceptions;
+
+namespace UATPRapidPay.Card.Domain.ValueObjects
 {
-    public class CardNumber
+    public record CardNumber
     {
         public CardNumber(string number)
         {
             Number = number;
+            ValidateFormat(number);
+        }
+
+        private static void ValidateFormat(string number)
+        {
+            if (string.IsNullOrEmpty(number))
+                throw new CardFormatException();
+
+            if (number.Length != 16)
+                throw new CardFormatException();
         }
 
         public string Number { get; set; }
