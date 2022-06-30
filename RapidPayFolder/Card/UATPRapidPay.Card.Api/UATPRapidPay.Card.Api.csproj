@@ -4,5 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\UATPRapidPay.Card.Infrastructure.Ioc\UATPRapidPay.Card.Infrastructure.Ioc.csproj" />
+  </ItemGroup>
+
 
 </Project>

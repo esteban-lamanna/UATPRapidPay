@@ -1,13 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using UATPRapidPay.Card.Domain.Factories;
 
-namespace UATPRapidPay.Card.Application
+namespace UATPRapidPay.Card.Domain
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static IServiceCollection AddDomain(this IServiceCollection services)
         {
             services.AddSingleton<ICardFactory, CardFactory>();
+            services.AddSingleton<ICardNumberFactory, CardNumberFactory>();
+
             return services;
         }
     }

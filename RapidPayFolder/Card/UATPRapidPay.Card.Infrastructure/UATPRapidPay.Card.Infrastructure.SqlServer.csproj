@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\UATPRapidPay.Shared\UATPRapidPay.Shared.csproj" />
+    <ProjectReference Include="..\UATPRapidPay.Card.Application\UATPRapidPay.Card.Application.csproj" />
+    <ProjectReference Include="..\UATPRapidPay.Card.Domain\UATPRapidPay.Card.Domain.csproj" />
   </ItemGroup>
 
 </Project>
