@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace UATPRapidPay.Card.Application.Queries
+namespace UATPRapidPay.Shared.Queries
 {
     public interface IQueryHandler<TQuery, TResult> where TQuery : class, IQuery<TResult>
     {

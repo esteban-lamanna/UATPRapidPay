@@ -5,6 +5,7 @@ using UATPRapidPay.Card.Domain.Entities;
 using UATPRapidPay.Card.Domain.Factories;
 using UATPRapidPay.Card.Domain.ValueObjects;
 using UATPRapidPay.Shared;
+using UATPRapidPay.Shared.Commands;
 
 namespace UATPRapidPay.Card.Application.Commands.Handlers
 {

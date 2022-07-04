@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\UATPRapidPay.Card.Infrastructure.Ioc\UATPRapidPay.Card.Infrastructure.Ioc.csproj" />
+    <ProjectReference Include="..\..\UATPRapidPay.Shared\UATPRapidPay.Shared.csproj" />
+    <ProjectReference Include="..\UATPRapidPay.Card.Application\UATPRapidPay.Card.Application.csproj" />
+    <ProjectReference Include="..\UATPRapidPay.Card.Domain\UATPRapidPay.Card.Domain.csproj" />
+    <ProjectReference Include="..\UATPRapidPay.Card.Infrastructure\UATPRapidPay.Card.Infrastructure.csproj" />
   </ItemGroup>
 
 

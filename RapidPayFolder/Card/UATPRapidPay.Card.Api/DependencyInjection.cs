@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using UATPRapidPay.Card.Infrastructure.Ioc;
+using UATPRapidPay.Card.Application;
+using UATPRapidPay.Card.Domain;
+using UATPRapidPay.Card.Infrastructure;
 
 namespace UATPRapidPay.Card.Api
 {
@@ -7,7 +9,9 @@ namespace UATPRapidPay.Card.Api
     {
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {
-            services.ConfigureIoC();
+            services.AddApplication();
+            services.AddDomain();
+            services.AddInfrastructure();
 
             return services;
         }

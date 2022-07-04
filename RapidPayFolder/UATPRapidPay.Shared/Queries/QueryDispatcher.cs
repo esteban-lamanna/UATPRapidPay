@@ -2,9 +2,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace UATPRapidPay.Card.Application.Queries
+namespace UATPRapidPay.Shared.Queries
 {
-    internal class QueryDispatcher : IQueryDispatcher
+    public class QueryDispatcher : IQueryDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
 

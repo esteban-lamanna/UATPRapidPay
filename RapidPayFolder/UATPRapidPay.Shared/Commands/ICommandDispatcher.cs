@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UATPRapidPay.Shared;
 
-namespace UATPRapidPay.Card.Application.Commands
+namespace UATPRapidPay.Shared.Commands
 {
     public interface ICommandDispatcher
     {

@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using UATPRapidPay.Shared;
 
-namespace UATPRapidPay.Card.Application.Commands
+namespace UATPRapidPay.Shared.Commands
 {
-    internal class CommandDispatcher : ICommandDispatcher
+    public class CommandDispatcher : ICommandDispatcher
     {
         IServiceScopeFactory _serviceScopeFactory;
 

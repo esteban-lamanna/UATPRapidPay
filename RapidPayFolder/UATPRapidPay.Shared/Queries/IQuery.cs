@@ -1,4 +1,4 @@
-﻿namespace UATPRapidPay.Card.Application.Queries
+﻿namespace UATPRapidPay.Shared.Queries
 {
     public interface IQuery
     {

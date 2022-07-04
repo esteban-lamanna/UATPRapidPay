@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace UATPRapidPay.Shared
+namespace UATPRapidPay.Shared.Commands
 {
     public interface ICommandHandler<T>
         where T : class, ICommand

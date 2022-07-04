@@ -19,11 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Domain", "RapidPayFolder\Card\UATPRapidPay.Card.Domain\UATPRapidPay.Card.Domain.csproj", "{4C83678E-D349-46F6-BE28-36702CF7BABF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Infrastructure.SqlServer", "RapidPayFolder\Card\UATPRapidPay.Card.Infrastructure\UATPRapidPay.Card.Infrastructure.SqlServer.csproj", "{B8373646-D9C5-4604-8DEF-8B9F2BB940E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Infrastructure", "RapidPayFolder\Card\UATPRapidPay.Card.Infrastructure\UATPRapidPay.Card.Infrastructure.csproj", "{B8373646-D9C5-4604-8DEF-8B9F2BB940E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Api", "RapidPayFolder\Card\UATPRapidPay.Card.Api\UATPRapidPay.Card.Api.csproj", "{460138E9-75D0-45CB-AEA0-540537BCCA55}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UATPRapidPay.Card.Infrastructure.Ioc", "UATPRapidPay.Card.Infrastructure.Ioc\UATPRapidPay.Card.Infrastructure.Ioc.csproj", "{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +49,6 @@ Global
 		{460138E9-75D0-45CB-AEA0-540537BCCA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{460138E9-75D0-45CB-AEA0-540537BCCA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{460138E9-75D0-45CB-AEA0-540537BCCA55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,7 +62,6 @@ Global
 		{4C83678E-D349-46F6-BE28-36702CF7BABF} = {1628274E-560E-4025-8EA7-C4087E58ED4B}
 		{B8373646-D9C5-4604-8DEF-8B9F2BB940E1} = {708F71E7-71BB-4781-BC79-1C4F4E7A7D84}
 		{460138E9-75D0-45CB-AEA0-540537BCCA55} = {4C1B42A9-00AE-46D0-9303-872DFD9398AB}
-		{889FB28D-EFA5-4982-B74A-FDEEFEE05B2E} = {708F71E7-71BB-4781-BC79-1C4F4E7A7D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8D3BE76-1B62-465B-995B-33FAB680B505}

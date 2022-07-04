@@ -1,6 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using UATPRapidPay.Card.Application.Commands;
+using UATPRapidPay.Card.Application.Commands.Handlers;
+using UATPRapidPay.Card.Application.Queries;
 using UATPRapidPay.Card.Application.Services;
+using UATPRapidPay.Shared.Commands;
+using UATPRapidPay.Shared.Queries;
 
 namespace UATPRapidPay.Card.Application
 {
@@ -10,6 +14,7 @@ namespace UATPRapidPay.Card.Application
         {
             services.AddCommandHandlers();
             services.AddCommandDispatcher();
+            services.AddQueryDispatcher();
             services.AddServices();
 
             return services;
@@ -17,12 +22,19 @@ namespace UATPRapidPay.Card.Application
 
         private static IServiceCollection AddCommandHandlers(this IServiceCollection services)
         {
+            services.AddTransient<ICommandHandler<CreateCardCommand>, CreateCardCommandHandler>();
             return services;
         }
 
         private static IServiceCollection AddCommandDispatcher(this IServiceCollection services)
         {
             services.AddTransient<ICommandDispatcher, CommandDispatcher>();
+            return services;
+        }
+
+        private static IServiceCollection AddQueryDispatcher(this IServiceCollection services)
+        {
+            services.AddTransient<IQueryDispatcher, QueryDispatcher>();
             return services;
         }
 
