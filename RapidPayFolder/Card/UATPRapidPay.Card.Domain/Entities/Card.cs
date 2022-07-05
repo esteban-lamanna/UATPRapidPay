@@ -17,10 +17,12 @@ namespace UATPRapidPay.Card.Domain.Entities
             Limit = limit;
         }
 
-        public CardNumber CardNumber { get; protected set; }
-        public Person Person { get; protected set; }
-        public ExpirationDate ExpirationDate { get; protected set; }
-        public decimal Limit { get; protected set; }
-        public virtual IEnumerable<Purchase> ProductsBougth { get; protected set; }
+        public CardNumber CardNumber { get; private set; }
+        public Person Person { get; private set; }
+        public ExpirationDate ExpirationDate { get; private set; }
+        public decimal Limit { get; private set; }
+        public IEnumerable<Purchase> ProductsBougth { get; private set; }
+
+        private ICollection<Purchase> _productsBougth;    
     }
 }

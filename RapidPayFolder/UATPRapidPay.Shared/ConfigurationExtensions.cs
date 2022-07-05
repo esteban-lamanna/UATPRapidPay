@@ -8,7 +8,7 @@ namespace UATPRapidPay.Shared
             where TOptions : new()
         {
             var options = new TOptions();
-            configuration.GetRequiredSection(sectionName).Bind(sectionName, options);
+            configuration.GetSection(sectionName).Bind(sectionName, options);
             return options;
         }
     }

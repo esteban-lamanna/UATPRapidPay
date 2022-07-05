@@ -15,7 +15,7 @@ namespace UATPRapidPay.Card.Infrastructure
         {
             services.AddQueries();
 
-            configuration.GetOptions<DatabaseOptions>("DatabaseOptions");
+            configuration.GetOptions<DatabaseOptions>("Application:Database");
 
             services.AddDbContext<ReadDbContext>();
 

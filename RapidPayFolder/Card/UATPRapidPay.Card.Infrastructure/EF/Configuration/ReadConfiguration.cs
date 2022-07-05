@@ -10,6 +10,8 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
     {
         public void Configure(EntityTypeBuilder<ReadPersonModel> builder)
         {
+            builder.ToTable("Persons");
+
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name);
             builder.HasMany(x => x.Cards).WithOne(c=>c.Person);
@@ -17,6 +19,8 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
 
         public void Configure(EntityTypeBuilder<ReadCardModel> builder)
         {
+            builder.ToTable("Cards");
+
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Number);
             builder.Property(x => x.Limit);
@@ -27,6 +31,8 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
 
         public void Configure(EntityTypeBuilder<ReadPurchaseModel> builder)
         {
+            builder.ToTable("Purchases");
+
             builder.HasKey(x => x.Id);
             builder.Property(x => x.ProductName);
             builder.Property(x => x.Price);

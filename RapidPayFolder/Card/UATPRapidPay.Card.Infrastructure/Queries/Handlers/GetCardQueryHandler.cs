@@ -1,15 +1,26 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using UATPRapidPay.Card.Application.DTO;
 using UATPRapidPay.Card.Application.Queries;
+using UATPRapidPay.Card.Infrastructure.EF;
 using UATPRapidPay.Shared.Queries;
 
 namespace UATPRapidPay.Card.Infrastructure.Queries.Handlers
 {
     internal class GetCardQueryHandler : IQueryHandler<GetCardQuery, GetCardDTO>, IQuery
     {
-        public Task<GetCardDTO> HandleAsync(GetCardQuery query)
+        private readonly ReadDbContext _readDbContext;
+
+        public GetCardQueryHandler(ReadDbContext readDbContext)
         {
-            throw new System.NotImplementedException();
+            _readDbContext = readDbContext;
+        }
+
+        public async Task<GetCardDTO> HandleAsync(GetCardQuery query)
+        {
+            var entity = await _readDbContext.Set<Domain.Entities.Card>().FirstOrDefaultAsync();
+
+            return new GetCardDTO();
         }
     }
 }
