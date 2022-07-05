@@ -8,12 +8,12 @@ namespace UATPRapidPay.Card.Api
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        public IConfiguration _configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
