@@ -19,7 +19,7 @@ namespace UATPRapidPay.Card.Api
         {
             services.AddControllers();
 
-            services.ConfigureServices();
+            services.ConfigureServices(_configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
