@@ -6,10 +6,6 @@ namespace UATPRapidPay.Card.Infrastructure.EF
 {
     internal class ReadDbContext : DbContext
     {
-        public DbSet<ReadPersonModel> Persons { get; set; }
-        public DbSet<ReadCardModel> Cards { get; set; }
-        public DbSet<ReadPurchaseModel> Purchases { get; set; }
-
         public ReadDbContext(DbContextOptions<ReadDbContext> options) : base(options)
         {
         }
@@ -18,8 +14,8 @@ namespace UATPRapidPay.Card.Infrastructure.EF
         {
             var configuration = new ReadConfiguration();
             modelBuilder.ApplyConfiguration<ReadCardModel>(configuration);
-            modelBuilder.ApplyConfiguration<ReadPersonModel>(configuration);
-            modelBuilder.ApplyConfiguration<ReadPurchaseModel>(configuration);   
+         //   modelBuilder.ApplyConfiguration<ReadPersonModel>(configuration);
+         //   modelBuilder.ApplyConfiguration<ReadPurchaseModel>(configuration);   
 
             base.OnModelCreating(modelBuilder);
         }

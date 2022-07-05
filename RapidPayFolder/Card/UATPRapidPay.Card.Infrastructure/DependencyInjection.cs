@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UATPRapidPay.Card.Application.DTO;
 using UATPRapidPay.Card.Application.Queries;
@@ -15,9 +16,13 @@ namespace UATPRapidPay.Card.Infrastructure
         {
             services.AddQueries();
 
-            configuration.GetOptions<DatabaseOptions>("Application:Database");
+            var connection = configuration.GetConnectionString("ConnectionString");
 
-            services.AddDbContext<ReadDbContext>();
+            services.AddDbContext<ReadDbContext>(options =>
+            {
+                options.UseSqlServer(connection);
+                options.UseLazyLoadingProxies();
+            });
 
             return services;
         }

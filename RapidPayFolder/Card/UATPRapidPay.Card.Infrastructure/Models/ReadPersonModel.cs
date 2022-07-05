@@ -6,6 +6,6 @@ namespace UATPRapidPay.Card.Infrastructure.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<ReadCardModel> Cards { get; set; }
+        public virtual ICollection<ReadCardModel> Cards { get; set; }
     }
 }
