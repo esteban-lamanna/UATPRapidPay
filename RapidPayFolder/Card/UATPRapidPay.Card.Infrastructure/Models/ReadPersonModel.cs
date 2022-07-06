@@ -2,7 +2,7 @@
 
 namespace UATPRapidPay.Card.Infrastructure.Models
 {
-    internal class ReadPersonModel
+    public class ReadPersonModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -12,10 +12,15 @@ namespace UATPRapidPay.Card.Infrastructure.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("cards");
+
             var configuration = new ReadConfiguration();
             modelBuilder.ApplyConfiguration<ReadCardModel>(configuration);
-         //   modelBuilder.ApplyConfiguration<ReadPersonModel>(configuration);
-         //   modelBuilder.ApplyConfiguration<ReadPurchaseModel>(configuration);   
+            modelBuilder.ApplyConfiguration<ReadPersonModel>(configuration);
+            modelBuilder.ApplyConfiguration<ReadPurchaseModel>(configuration);   
+
+            // Add-migration initial -StartupProject UATPRapidPay.Card.Api -OutputDir EF/Migrations -Context ReadDbContext
+            // Update-Database -Context ReadDbContext
 
             base.OnModelCreating(modelBuilder);
         }
