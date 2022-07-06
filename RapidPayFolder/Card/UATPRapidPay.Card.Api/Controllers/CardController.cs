@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Api.Models;
+using UATPRapidPay.Shared.Queries;
 
 namespace UATPRapidPay.Card.Api.Controllers
 {
@@ -10,6 +11,7 @@ namespace UATPRapidPay.Card.Api.Controllers
     public class CardController : ControllerBase
     {
         private readonly ILogger<CardController> _logger;
+        private readonly IQueryDispatcher _queryDispatcher;
 
         public CardController(ILogger<CardController> logger)
         {
@@ -20,6 +22,8 @@ namespace UATPRapidPay.Card.Api.Controllers
         [Route("{CardNumber}")]
         public async Task<IActionResult> Get([FromRoute] GetCardRequest getCardRequest)
         {
+            await _queryDispatcher
+            
             return Ok("sd");
         }
 

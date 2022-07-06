@@ -20,7 +20,7 @@ namespace UATPRapidPay.Card.Infrastructure.Queries.Handlers
         {
             var entity = await _readDbContext.Set<Domain.Entities.Card>().FirstOrDefaultAsync();
 
-            return new GetCardDTO();
+            return (GetCardDTO)entity;
         }
     }
 }
