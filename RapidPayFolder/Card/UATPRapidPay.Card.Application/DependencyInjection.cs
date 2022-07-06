@@ -28,13 +28,13 @@ namespace UATPRapidPay.Card.Application
 
         private static IServiceCollection AddCommandDispatcher(this IServiceCollection services)
         {
-            services.AddTransient<ICommandDispatcher, CommandDispatcher>();
+            services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
             return services;
         }
 
         private static IServiceCollection AddQueryDispatcher(this IServiceCollection services)
         {
-            services.AddTransient<IQueryDispatcher, QueryDispatcher>();
+            services.AddSingleton<IQueryDispatcher, QueryDispatcher>();
             return services;
         }
 

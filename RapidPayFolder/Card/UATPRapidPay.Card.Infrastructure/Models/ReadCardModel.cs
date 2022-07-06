@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UATPRapidPay.Card.Application.DTO;
 
 namespace UATPRapidPay.Card.Infrastructure.Models
 {
@@ -11,6 +12,6 @@ namespace UATPRapidPay.Card.Infrastructure.Models
         public decimal Limit { get; set; }
         public virtual ReadPersonModel Person { get; set; }
         public DateOnly ExpirationDate { get; set; }
-        public virtual ICollection<ReadPurchaseModel> ProductsBougth { get; set; }
+        public virtual ICollection<ReadPurchaseModel> ProductsBougth { get; set; }       
     }
 }

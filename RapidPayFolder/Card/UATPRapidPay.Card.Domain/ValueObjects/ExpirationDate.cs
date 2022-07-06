@@ -25,5 +25,15 @@ namespace UATPRapidPay.Card.Domain.ValueObjects
             if (!isValid)
                 throw new ExpirationDateFormatException();
         }
+
+        public static implicit operator ExpirationDate(DateOnly date)
+        {
+            return new ExpirationDate(date);
+        }
+
+        public static implicit operator DateOnly(ExpirationDate name)
+        {
+            return name.Value;
+        }
     }
 }
