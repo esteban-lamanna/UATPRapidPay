@@ -10,5 +10,9 @@ namespace UATPRapidPay.Card.Api.Models
 
         [Required]
         public string PersonName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string PersonEmail { get; set; }
     }
 }

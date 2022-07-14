@@ -20,7 +20,7 @@ namespace UATPRapidPay.Card.Domain.ValueObjects
             var twoYearsTime = DateOnly.FromDateTime(DateTime.UtcNow.AddYears(2).Date);
 
             var isValid = now < date &&
-                          twoYearsTime < date;
+                          twoYearsTime > date;
 
             if (!isValid)
                 throw new ExpirationDateFormatException();

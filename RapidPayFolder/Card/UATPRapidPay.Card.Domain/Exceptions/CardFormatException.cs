@@ -1,4 +1,6 @@
-﻿namespace UATPRapidPay.Card.Domain.Exceptions
+﻿using UATPRapidPay.Shared.Exceptions;
+
+namespace UATPRapidPay.Card.Domain.Exceptions
 {
     internal class CardFormatException : DomainException
     {

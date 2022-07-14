@@ -1,4 +1,5 @@
 ﻿using System;
+using UATPRapidPay.Shared.Exceptions;
 
 namespace UATPRapidPay.Card.Domain.Exceptions
 {

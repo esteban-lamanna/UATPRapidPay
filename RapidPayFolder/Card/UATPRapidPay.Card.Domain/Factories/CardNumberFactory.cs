@@ -8,7 +8,7 @@ namespace UATPRapidPay.Card.Domain.Factories
     {
         public async Task<CardNumber> Generate(Person person)
         {
-            return new CardNumber("1231231231232");
+            return new CardNumber("1234567891234567");
         }
     }
 }

@@ -7,5 +7,6 @@ namespace UATPRapidPay.Card.Application.Commands
     {
         public Guid Id { get; set; }
         public string PersonName { get; set; }
+        public string PersonEmail { get; set; }
     }
 }

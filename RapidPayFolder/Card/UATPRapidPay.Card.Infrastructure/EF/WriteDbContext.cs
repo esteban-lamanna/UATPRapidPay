@@ -5,7 +5,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF
 {
     internal class WriteDbContext : DbContext
     {
-        internal WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options)
+        public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options)
         {
         }
 

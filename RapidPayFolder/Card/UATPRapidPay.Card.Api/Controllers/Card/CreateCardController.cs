@@ -27,6 +27,7 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
             {
                 Id = createCardRequest.Id,
                 PersonName = createCardRequest.PersonName,
+                PersonEmail = createCardRequest.PersonEmail
             });
 
             return CreatedAtAction(actionName: nameof(GetCardController.Get),

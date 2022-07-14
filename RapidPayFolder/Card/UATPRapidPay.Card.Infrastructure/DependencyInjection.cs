@@ -24,6 +24,12 @@ namespace UATPRapidPay.Card.Infrastructure
                 options.UseLazyLoadingProxies();
             });
 
+            services.AddDbContext<WriteDbContext>(options =>
+            {
+                options.UseSqlServer(connection);
+                options.UseLazyLoadingProxies();
+            });
+
             return services;
         }
 

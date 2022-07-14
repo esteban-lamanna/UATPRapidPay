@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UATPRapidPay.Card.Api.Middlewares;
 
 namespace UATPRapidPay.Card.Api
 {
@@ -19,6 +20,8 @@ namespace UATPRapidPay.Card.Api
         {
             services.AddControllers();
 
+            services.AddScoped<ExceptionsMiddleware>();
+
             services.ConfigureServices(_configuration);
         }
 
@@ -31,7 +34,8 @@ namespace UATPRapidPay.Card.Api
 
             app.UseRouting();
 
-           // app.UseAuthorization();
+            // app.UseAuthorization();
+            app.UseMiddleware<ExceptionsMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
