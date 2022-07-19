@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.RapidPay.UseCasesPorts\RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.csproj" />
+    <ProjectReference Include="..\RapidPay.Entities\RapidPay.EnterpriseBusinessRules.Entities.csproj" />
+    <ProjectReference Include="..\RapidPay.Repository\RapidPay.InterfaceAdapters.Gateways.Repository.EF.csproj" />
+  </ItemGroup>
+
+</Project>

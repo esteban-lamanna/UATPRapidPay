@@ -1,14 +1,15 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.UseCasesPorts;
-using Drivers.RapidPay.Repository;
+﻿using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.LoginUser;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCases
+namespace RapidPay.ApplicationBusinessRules.UseCases
 {
     public class LoginUserInteractor : ILoginUserInputPort
     {
-        readonly IUserLoginRepository _loginUserRepository;
-        readonly ILoginUserOutputPort _loginUserOutputPort;
+        private readonly IUserLoginRepository _loginUserRepository;
+        private readonly ILoginUserOutputPort _loginUserOutputPort;
 
         public LoginUserInteractor(IUserLoginRepository loginUserRepository,
                                    ILoginUserOutputPort loginUserOutputPort)

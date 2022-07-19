@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Drivers.RapidPay.Repository;
+using RapidPay.InterfaceAdapters.Gateways.Repository.EF;
+
 namespace RapidPay.Migrations
 {
     [DbContext(typeof(RapidPayContext))]

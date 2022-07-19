@@ -1,11 +1,11 @@
-﻿using Domain.RapidPay.Entities;
-using Domain.RapidPay.Exceptions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Exceptions;
 using System;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.Logic
+namespace RapidPay.ApplicationBusinessRules.UseCases.Logic
 {
     public class PaymentLogic : IPaymentLogic
     {

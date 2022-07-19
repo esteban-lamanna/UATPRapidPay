@@ -1,4 +1,4 @@
-﻿using Domain.RapidPay.Entities;
+﻿using RapidPay.EnterpriseBusinessRules.Entities;
 using System;
 namespace Drivers.RapidPay.Models
 {

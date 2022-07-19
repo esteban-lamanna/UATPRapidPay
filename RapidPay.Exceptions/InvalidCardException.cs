@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Domain.RapidPay.Exceptions
+namespace RapidPay.EnterpriseBusinessRules.Exceptions
 {
     public class InvalidCardException : Exception
     {

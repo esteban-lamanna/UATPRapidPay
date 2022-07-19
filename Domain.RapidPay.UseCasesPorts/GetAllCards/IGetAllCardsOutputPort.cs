@@ -1,8 +1,8 @@
-﻿using Domain.RapidPay.DTO;
+﻿using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCasesPorts
+namespace RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.GetAllCards
 {
     public interface IGetAllCardsOutputPort
     {

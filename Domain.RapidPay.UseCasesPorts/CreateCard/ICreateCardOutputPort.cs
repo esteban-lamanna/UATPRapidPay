@@ -1,7 +1,7 @@
-﻿using Domain.RapidPay.DTO;
+﻿using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCasesPorts
+namespace RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.CreateCard
 {
     public interface ICreateCardOutputPort
     {

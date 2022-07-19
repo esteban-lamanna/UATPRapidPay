@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.RapidPay.Entities
+namespace RapidPay.EnterpriseBusinessRules.Entities
 {
     public class Payment
     {

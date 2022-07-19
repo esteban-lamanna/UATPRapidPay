@@ -1,11 +1,11 @@
 using Drivers.RapidPay.Authentication;
 using Drivers.RapidPay.Middlewares;
-using InterfaceAdapters.RapidPay.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RapidPay.InterfaceAdapters.Gateways.IoC;
 
 namespace Drivers.RapidPay
 {

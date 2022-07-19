@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Domain.RapidPay.Entities
+namespace RapidPay.EnterpriseBusinessRules.Entities
 {
     public interface IUnitOfWork
     {

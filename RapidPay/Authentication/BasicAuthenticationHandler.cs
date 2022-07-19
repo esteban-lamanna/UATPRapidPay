@@ -1,9 +1,10 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.UseCasesPorts;
-using InterfaceAdapters.RapidPay.Presenters;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.LoginUser;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.InterfaceAdapters.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -16,8 +17,8 @@ namespace Drivers.RapidPay.Authentication
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>
     {
-        readonly ILoginUserInputPort _loginUserInputPort;
-        readonly ILoginUserOutputPort _loginUserOutputPort;
+        private readonly ILoginUserInputPort _loginUserInputPort;
+        private readonly ILoginUserOutputPort _loginUserOutputPort;
 
         public BasicAuthenticationHandler(IOptionsMonitor<BasicAuthenticationOptions> options,
                                           ILoggerFactory logger,

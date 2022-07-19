@@ -1,15 +1,15 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.UseCasesPorts;
-using Drivers.RapidPay.Repository;
+﻿using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.GetAllCards;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCases
+namespace RapidPay.ApplicationBusinessRules.UseCases
 {
     public class GetAllCardsInteractor : IGetAllCardsInputPort
     {
-        readonly ICardRepository _cardRepository;
-        readonly IGetAllCardsOutputPort _getAllCardOutputPort;
+        private readonly ICardRepository _cardRepository;
+        private readonly IGetAllCardsOutputPort _getAllCardOutputPort;
 
         public GetAllCardsInteractor(ICardRepository cardRepository,
                                     IGetAllCardsOutputPort getAllCardsOutputPort)

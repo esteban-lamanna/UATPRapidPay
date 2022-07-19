@@ -1,7 +1,7 @@
-﻿using Domain.RapidPay.Entities;
+﻿using RapidPay.EnterpriseBusinessRules.Entities;
 using System.Collections.Generic;
 
-namespace Drivers.RapidPay.Repository
+namespace RapidPay.EnterpriseBusinessRules.Entities.Repositories
 {
     public interface ICardRepository
     {

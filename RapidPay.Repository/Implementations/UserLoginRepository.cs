@@ -1,13 +1,14 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
 using System.Threading.Tasks;
 
-namespace Drivers.RapidPay.Repository
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF.Implementations
 {
     public class UserLoginRepository : IUserLoginRepository
     {
-        readonly RapidPayContext _rapidPayContext;
+        private readonly RapidPayContext _rapidPayContext;
 
         public UserLoginRepository(RapidPayContext rapidPayContext)
         {
@@ -19,7 +20,7 @@ namespace Drivers.RapidPay.Repository
             return await _rapidPayContext.Set<User>()
                 .AsNoTracking()
                 .FirstOrDefaultAsync(a => a.Email == loginUserDTO.Username &&
-                                                                               a.Password == loginUserDTO.Password);
+                                          a.Password == loginUserDTO.Password);
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using Domain.RapidPay.Logic;
-using Domain.RapidPay.UseCasesPorts;
-using Drivers.RapidPay.Repository;
-using InterfaceAdapters.RapidPay.Presenters;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RapidPay.ApplicationBusinessRules.UseCases;
+using RapidPay.ApplicationBusinessRules.UseCases.Logic;
+using RapidPay.InterfaceAdapters.Gateways.Repository.EF;
+using RapidPay.InterfaceAdapters.Presenters;
 
-namespace InterfaceAdapters.RapidPay.IoC
+namespace RapidPay.InterfaceAdapters.Gateways.IoC
 {
     public static class DependencyInjectionConfiguration
     {

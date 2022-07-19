@@ -1,4 +1,4 @@
-﻿namespace Domain.RapidPay.DTO
+﻿namespace RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests
 {
     public class LoginUserDTO
     {

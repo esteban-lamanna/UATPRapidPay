@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain.RapidPay.UseCasesPorts\Domain.RapidPay.UseCasesPorts.csproj" />
+    <ProjectReference Include="..\Domain.RapidPay.UseCasesPorts\RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.csproj" />
   </ItemGroup>
 
 </Project>

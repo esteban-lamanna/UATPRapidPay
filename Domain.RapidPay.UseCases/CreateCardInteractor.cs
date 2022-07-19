@@ -1,16 +1,17 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.Entities;
-using Domain.RapidPay.UseCasesPorts;
-using Drivers.RapidPay.Repository;
+﻿using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.CreateCard;
+using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCases
+namespace RapidPay.ApplicationBusinessRules.UseCases
 {
     public class CreateCardInteractor : ICreateCardInputPort
     {
-        readonly ICardRepository _cardRepository;
-        readonly ICreateCardOutputPort _createCardOutputPort;
-        readonly IUnitOfWork _unitOfWork;
+        private readonly ICardRepository _cardRepository;
+        private readonly ICreateCardOutputPort _createCardOutputPort;
+        private readonly IUnitOfWork _unitOfWork;
 
         public CreateCardInteractor(ICardRepository cardRepository,
                                     ICreateCardOutputPort createCardOutputPort,

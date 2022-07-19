@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Drivers.RapidPay.Repository
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF
 {
     public class RapidPayContext : DbContext
     {

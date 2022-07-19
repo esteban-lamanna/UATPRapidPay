@@ -1,8 +1,8 @@
-﻿using Domain.RapidPay.DTO;
+﻿using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.Logic
+namespace RapidPay.ApplicationBusinessRules.UseCases.Logic
 {
     public interface ICardBalanceLogic
     {

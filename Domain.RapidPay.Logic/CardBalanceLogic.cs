@@ -1,17 +1,17 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.Entities;
-using Domain.RapidPay.Exceptions;
+﻿using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.EnterpriseBusinessRules.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain.RapidPay.Logic
+namespace RapidPay.ApplicationBusinessRules.UseCases.Logic
 {
     public class CardBalanceLogic : ICardBalanceLogic
     {
-        readonly IUnitOfWork _rapidPayContext;
-        readonly IFeeLogic _feeLogic;
+        private readonly IUnitOfWork _rapidPayContext;
+        private readonly IFeeLogic _feeLogic;
 
         public CardBalanceLogic(IUnitOfWork rapidPayContext, IFeeLogic feeLogic)
         {
@@ -24,7 +24,7 @@ namespace Domain.RapidPay.Logic
             if (await IsCardNumberInUseAsync(idUser, cardNumber))
                 throw new CardNumberInUseException("Card number in use.");
 
-            var card = new Card()
+            Card card = new Card()
             {
                 Limit = limit,
                 Available = limit,
@@ -44,9 +44,9 @@ namespace Domain.RapidPay.Logic
         {
             await ValidateCardNumberAsync(idUser, cardNumber);
 
-            var card = await GetCardAsync(idUser, cardNumber);
+            Card card = await GetCardAsync(idUser, cardNumber);
 
-            var payments = new List<Payment>();
+            List<Payment> payments = new List<Payment>();
             /*_rapidPayContext.Set<Payment>()
                 .Where(a => a.Date >= from)
                 .Where(a => a.Date <= to)

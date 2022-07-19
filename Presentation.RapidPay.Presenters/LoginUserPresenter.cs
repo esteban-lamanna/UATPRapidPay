@@ -1,8 +1,8 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.UseCasesPorts;
+﻿using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.LoginUser;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
 using System.Threading.Tasks;
 
-namespace InterfaceAdapters.RapidPay.Presenters
+namespace RapidPay.InterfaceAdapters.Presenters
 {
     public class LoginUserPresenter : ILoginUserOutputPort, IPresenter<UserDTO>
     {

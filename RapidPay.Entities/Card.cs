@@ -1,7 +1,7 @@
-﻿using Domain.RapidPay.Exceptions;
+﻿using RapidPay.EnterpriseBusinessRules.Exceptions;
 using System.Collections.Generic;
 
-namespace Domain.RapidPay.Entities
+namespace RapidPay.EnterpriseBusinessRules.Entities
 {
     public class Card
     {

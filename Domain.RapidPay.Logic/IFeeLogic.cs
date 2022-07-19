@@ -1,4 +1,4 @@
-﻿namespace Domain.RapidPay.Logic
+﻿namespace RapidPay.ApplicationBusinessRules.UseCases.Logic
 {
     public interface IFeeLogic
     {

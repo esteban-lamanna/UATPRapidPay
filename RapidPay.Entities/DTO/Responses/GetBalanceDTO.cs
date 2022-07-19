@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.RapidPay.DTO
+namespace RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses
 {
     public class GetBalanceDTO
     {

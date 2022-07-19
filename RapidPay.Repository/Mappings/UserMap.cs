@@ -1,8 +1,8 @@
-﻿using Domain.RapidPay.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using RapidPay.EnterpriseBusinessRules.Entities;
 
-namespace Drivers.RapidPay.Repository.Mappings
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF.Mappings
 {
     public class UserMap : IEntityTypeConfiguration<User>
     {

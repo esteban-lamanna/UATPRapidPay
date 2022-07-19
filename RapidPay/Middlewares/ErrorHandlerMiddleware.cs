@@ -1,5 +1,5 @@
-﻿using Domain.RapidPay.Exceptions;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using RapidPay.EnterpriseBusinessRules.Exceptions;
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;

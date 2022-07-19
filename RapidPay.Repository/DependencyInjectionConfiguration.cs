@@ -1,8 +1,10 @@
-﻿using Domain.RapidPay.Entities;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
+using RapidPay.InterfaceAdapters.Gateways.Repository.EF.Implementations;
 
-namespace Drivers.RapidPay.Repository
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF
 {
     public static class DependencyInjectionConfiguration
     {

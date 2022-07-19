@@ -1,4 +1,4 @@
-﻿namespace InterfaceAdapters.RapidPay.Presenters
+﻿namespace RapidPay.InterfaceAdapters.Presenters
 {
     public interface IPresenter<T>
     {

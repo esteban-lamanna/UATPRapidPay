@@ -1,7 +1,9 @@
-﻿using Domain.RapidPay.UseCases;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.CreateCard;
+using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.GetAllCards;
+using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.LoginUser;
 
-namespace Domain.RapidPay.UseCasesPorts
+namespace RapidPay.ApplicationBusinessRules.UseCases
 {
     public static class DependencyInjectionConfiguration
     {

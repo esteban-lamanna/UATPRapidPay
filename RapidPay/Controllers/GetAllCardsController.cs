@@ -1,8 +1,8 @@
-﻿using Domain.RapidPay.DTO;
-using Domain.RapidPay.UseCasesPorts;
-using InterfaceAdapters.RapidPay.Presenters;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.GetAllCards;
+using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
+using RapidPay.InterfaceAdapters.Presenters;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,8 +13,8 @@ namespace Drivers.RapidPay.UI
     [Route("Cards")]
     public class GetAllCardsController : ControllerBase
     {
-        readonly IGetAllCardsInputPort _getAllCardInputPort;
-        readonly IGetAllCardsOutputPort _getAllCardOutputPort;
+        private readonly IGetAllCardsInputPort _getAllCardInputPort;
+        private readonly IGetAllCardsOutputPort _getAllCardOutputPort;
 
         public GetAllCardsController(IGetAllCardsInputPort getAllCardInputPort,
                                     IGetAllCardsOutputPort getAllCardOutputPort)
@@ -28,7 +28,7 @@ namespace Drivers.RapidPay.UI
         {
             await _getAllCardInputPort.HandleAsync();
 
-            var data = ((IPresenter<IEnumerable<CardDTO>>)_getAllCardOutputPort).Content;
+            IEnumerable<CardDTO> data = ((IPresenter<IEnumerable<CardDTO>>)_getAllCardOutputPort).Content;
 
             return Ok(data);
         }

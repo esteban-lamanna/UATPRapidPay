@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Domain.RapidPay.Logic
+namespace RapidPay.ApplicationBusinessRules.UseCases.Logic
 {
     public interface IPaymentLogic
     {

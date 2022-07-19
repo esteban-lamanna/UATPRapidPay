@@ -1,8 +1,10 @@
-﻿namespace Drivers.RapidPay.Repository
+﻿using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
+
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF.Implementations
 {
     public class PaymentRepository : IPaymentRepository
     {
-        readonly RapidPayContext _rapidPayContext;
+        private readonly RapidPayContext _rapidPayContext;
 
         public PaymentRepository(RapidPayContext rapidPayContext)
         {

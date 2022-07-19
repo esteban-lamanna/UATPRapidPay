@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Domain.RapidPay.UseCasesPorts
+namespace RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.GetAllCards
 {
     public interface IGetAllCardsInputPort
     {

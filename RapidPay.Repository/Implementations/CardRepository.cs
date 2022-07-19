@@ -1,12 +1,13 @@
-﻿using Domain.RapidPay.Entities;
+﻿using RapidPay.EnterpriseBusinessRules.Entities;
+using RapidPay.EnterpriseBusinessRules.Entities.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Drivers.RapidPay.Repository
+namespace RapidPay.InterfaceAdapters.Gateways.Repository.EF.Implementations
 {
     public class CardRepository : ICardRepository
     {
-        readonly RapidPayContext _rapidPayContext;
+        private readonly RapidPayContext _rapidPayContext;
 
         public CardRepository(RapidPayContext rapidPayContext)
         {
