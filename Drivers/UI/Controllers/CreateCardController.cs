@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RapidPay.ApplicationBusinessRules.UseCases.UseCasesPort.CreateCard;
 using RapidPay.Drivers.UI.Models;
 using RapidPay.EnterpriseBusinessRules.Entities.DTO.Requests;
 using RapidPay.EnterpriseBusinessRules.Entities.DTO.Responses;
 using RapidPay.InterfaceAdapters.Presenters;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RapidPay.Drivers.UI.Controllers
 {
     [ApiController]
-    // [Authorize]
+    [Authorize]
     [Route("Cards")]
     public class CreateCardController : ControllerBase
     {
@@ -27,18 +29,18 @@ namespace RapidPay.Drivers.UI.Controllers
         [Route("")]
         public async Task<IActionResult> CreateAsync([FromBody] CreateCardRequest request)
         {
-            //     var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
+            var userId = HttpContext.User.Claims.First(a => a.Type == "Id");
 
             var createCardDTO = new CreateCardDTO()
             {
-                //     IdUser = int.Parse(userId.Value),
+                IdUser = int.Parse(userId.Value),
                 Limit = request.Limit,
                 Number = request.Number
             };
 
             await _createCardInputPort.HandleAsync(createCardDTO);
 
-            CardDTO output = ((IPresenter<CardDTO>)_createCardOutputPort).Content;
+            var output = ((IPresenter<CardDTO>)_createCardOutputPort).Content;
 
             return Ok();
         }
