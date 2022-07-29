@@ -7,9 +7,9 @@ namespace UATPRapidPay.Card.Domain.Entities
 {
     public class Person : AggregateRoot<Guid>
     {
-        public IEnumerable<Card> Cards { get; }
+        public virtual IEnumerable<Card> Cards { get; }
 
-        private List<Card> _cards = new();
+        private ICollection<Card> _cards = new List<Card>();
 
         public Name Name { get; protected set; }
 
@@ -19,6 +19,10 @@ namespace UATPRapidPay.Card.Domain.Entities
         {
             Name = name;
             Email = email;
+        }
+
+        private Person()
+        {
         }
     }
 }

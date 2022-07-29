@@ -13,7 +13,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF
         {
             var configuration = new WriteConfiguration();
             modelBuilder.ApplyConfiguration<Domain.Entities.Card>(configuration);
-            modelBuilder.ApplyConfiguration<Domain.Entities.Purchase>(configuration);
+          //  modelBuilder.ApplyConfiguration<Domain.Entities.Purchase>(configuration);
             modelBuilder.ApplyConfiguration<Domain.Entities.Person>(configuration);
             base.OnModelCreating(modelBuilder);
         }

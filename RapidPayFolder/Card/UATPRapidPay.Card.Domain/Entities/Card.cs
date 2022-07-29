@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UATPRapidPay.Card.Domain.ValueObjects;
 using UATPRapidPay.Shared.Entities;
 
 namespace UATPRapidPay.Card.Domain.Entities
 {
-    public class Card : AggregateRoot<CardNumber>
+    public class Card : AggregateRoot<Guid>
     {
         public Card(CardNumber cardNumber,
                     Person person,
@@ -17,12 +18,15 @@ namespace UATPRapidPay.Card.Domain.Entities
             Limit = limit;
         }
 
+        private Card()
+        {
+        }
+
         public CardNumber CardNumber { get; private set; }
         public Person Person { get; private set; }
         public ExpirationDate ExpirationDate { get; private set; }
         public decimal Limit { get; private set; }
-        public IEnumerable<Purchase> ProductsBougth { get; private set; }
-
-        private ICollection<Purchase> _productsBougth;    
+   //     public IEnumerable<Purchase> ProductsBougth { get; private set; }
+   //    private ICollection<Purchase> _productsBougth;    
     }
 }

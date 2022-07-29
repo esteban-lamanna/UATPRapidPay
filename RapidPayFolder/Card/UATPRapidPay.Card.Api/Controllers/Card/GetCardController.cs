@@ -21,7 +21,7 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
         [HttpGet("{CardNumber}")]
         public async Task<IActionResult> Get([FromRoute] GetCardRequest getCardRequest)
         {
-            Application.DTO.GetCardDTO cardDto = await _queryDispatcher.QueryAsync(new GetCardQuery()
+            var cardDto = await _queryDispatcher.QueryAsync(new GetCardQuery()
             {
                 CardNumber = getCardRequest.CardNumber
             });
