@@ -26,7 +26,7 @@ namespace UATPRapidPay.Card.Domain.Entities
         public Person Person { get; private set; }
         public ExpirationDate ExpirationDate { get; private set; }
         public decimal Limit { get; private set; }
-   //     public IEnumerable<Purchase> ProductsBougth { get; private set; }
-   //    private ICollection<Purchase> _productsBougth;    
+        public IEnumerable<Purchase> ProductsBougth { get; private set; }
+        private ICollection<Purchase> _productsBougth = new List<Purchase>();    
     }
 }

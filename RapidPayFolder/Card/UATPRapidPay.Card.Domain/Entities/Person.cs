@@ -7,7 +7,7 @@ namespace UATPRapidPay.Card.Domain.Entities
 {
     public class Person : AggregateRoot<Guid>
     {
-        public virtual IEnumerable<Card> Cards { get; }
+        public IEnumerable<Card> Cards { get; private set; }
 
         private ICollection<Card> _cards = new List<Card>();
 

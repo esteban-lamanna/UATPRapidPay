@@ -27,8 +27,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasColumnName("Id");
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
@@ -62,8 +61,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasColumnName("Id");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -85,6 +83,40 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
                     b.ToTable("Persons", (string)null);
                 });
 
+            modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Purchase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("IdCard")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("Price");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("ProductName");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("PurchaseDate");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdCard");
+
+                    b.ToTable("Purchases", (string)null);
+                });
+
             modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Card", b =>
                 {
                     b.HasOne("UATPRapidPay.Card.Domain.Entities.Person", "Person")
@@ -94,6 +126,22 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
                         .IsRequired();
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Purchase", b =>
+                {
+                    b.HasOne("UATPRapidPay.Card.Domain.Entities.Card", "Card")
+                        .WithMany("_productsBougth")
+                        .HasForeignKey("IdCard")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
+                });
+
+            modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Card", b =>
+                {
+                    b.Navigation("_productsBougth");
                 });
 
             modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Person", b =>
