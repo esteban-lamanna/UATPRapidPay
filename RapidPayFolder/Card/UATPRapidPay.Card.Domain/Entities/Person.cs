@@ -15,8 +15,9 @@ namespace UATPRapidPay.Card.Domain.Entities
 
         public Email Email { get; protected set; }
 
-        public Person(Email email, Name name)
+        public Person(Guid id, Email email, Name name)
         {
+            Id = id;
             Name = name;
             Email = email;
         }

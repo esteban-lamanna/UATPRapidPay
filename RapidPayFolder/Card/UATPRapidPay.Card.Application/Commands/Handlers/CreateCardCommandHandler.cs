@@ -15,21 +15,25 @@ namespace UATPRapidPay.Card.Application.Commands.Handlers
         private readonly ICardNumberFactory _cardNumberFactory;
         private readonly ICardService _cardService;
         Domain.Repositories.ICardRepository _cardRepository;
+        private readonly IPersonFactory _personFactory;
 
         public CreateCardCommandHandler(ICardFactory cardFactory,
                                         ICardService cardService,
                                         ICardNumberFactory cardNumberFactory,
-                                        Domain.Repositories.ICardRepository cardRepository)
+                                        Domain.Repositories.ICardRepository cardRepository,
+                                        IPersonFactory personFactory
+                                        )
         {
             _cardFactory = cardFactory;
             _cardService = cardService;
             _cardNumberFactory = cardNumberFactory;
             _cardRepository = cardRepository;
+            _personFactory = personFactory;
         }
 
         public async Task HandleAsync(CreateCardCommand command)
         {
-            var person = new Person(new Email(command.PersonEmail), new Name(command.PersonName));
+            var person = await _personFactory.GenerateAsync(command.Id, command.PersonName, command.PersonEmail);
 
             var cardNumber = await _cardNumberFactory.Generate(person);
 

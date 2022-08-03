@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using UATPRapidPay.Card.Domain.Factories;
-using UATPRapidPay.Card.Domain.Repositories;
 
 namespace UATPRapidPay.Card.Domain
 {
@@ -10,6 +9,7 @@ namespace UATPRapidPay.Card.Domain
         {
             services.AddSingleton<ICardFactory, CardFactory>();
             services.AddSingleton<ICardNumberFactory, CardNumberFactory>();
+            services.AddSingleton<IPersonFactory, PersonFactory>();
 
             return services;
         }

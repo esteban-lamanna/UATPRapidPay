@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using UATPRapidPay.Card.Api.Models;
-using UATPRapidPay.Card.Application.Commands;
+using UATPRapidPay.Card.Api.Models.Card;
 using UATPRapidPay.Shared.Commands;
 
 namespace UATPRapidPay.Card.Api.Controllers.Card
@@ -14,7 +13,8 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
         private readonly ILogger<CreateCardController> _logger;
         private readonly ICommandDispatcher _commandDispatcher;
 
-        public CreateCardController(ILogger<CreateCardController> logger, ICommandDispatcher commandDispatcher)
+        public CreateCardController(ILogger<CreateCardController> logger,
+                                    ICommandDispatcher commandDispatcher)
         {
             _logger = logger;
             _commandDispatcher = commandDispatcher;
@@ -23,12 +23,7 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCardRequest createCardRequest)
         {
-            await _commandDispatcher.SendAsync(new CreateCardCommand()
-            {
-                Id = createCardRequest.Id,
-                PersonName = createCardRequest.PersonName,
-                PersonEmail = createCardRequest.PersonEmail
-            });
+            await _commandDispatcher.SendAsync(createCardRequest.ToCommand());
 
             return CreatedAtAction(actionName: nameof(GetCardController.Get),
                                    controllerName: nameof(GetCardController),

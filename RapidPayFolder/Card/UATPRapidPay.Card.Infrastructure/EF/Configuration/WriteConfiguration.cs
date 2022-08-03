@@ -15,11 +15,11 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
         public void Configure(EntityTypeBuilder<Person> builder)
         {
             var personNameConverter = new ValueConverter<Name, string>(
-                    n => n.ToString(),
+                    n => n.Value,
                     s => new Name(s));
 
             var personEmailConverter = new ValueConverter<Email, string>(
-                    e => e.ToString(),
+                    e => e.Value,
                     s => new Email(s));
 
             builder.ToTable("Persons");

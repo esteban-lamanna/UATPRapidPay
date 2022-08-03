@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using UATPRapidPay.Card.Api.Models;
-using UATPRapidPay.Card.Application.Queries;
+using UATPRapidPay.Card.Api.Models.Card;
 using UATPRapidPay.Shared.Queries;
 
 namespace UATPRapidPay.Card.Api.Controllers.Card
@@ -17,14 +16,11 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
             _queryDispatcher = queryDispatcher;
         }
 
-        [Route("Card/{CardNumber}")]
+        [Route("{CardNumber}")]
         [HttpGet("{CardNumber}")]
         public async Task<IActionResult> Get([FromRoute] GetCardRequest getCardRequest)
         {
-            var cardDto = await _queryDispatcher.QueryAsync(new GetCardQuery()
-            {
-                CardNumber = getCardRequest.CardNumber
-            });
+            var cardDto = await _queryDispatcher.QueryAsync(getCardRequest.ToQuery());
 
             if (cardDto == null)
                 return NotFound();

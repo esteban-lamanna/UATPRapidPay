@@ -19,7 +19,7 @@ namespace UATPRapidPay.Card.Infrastructure
 
             services.AddRepositories();
 
-            var connection = configuration.GetConnectionString("ConnectionString");
+            string? connection = configuration.GetConnectionString("ConnectionString");
 
             services.AddDbContext<ReadDbContext>(options =>
             {
@@ -37,15 +37,16 @@ namespace UATPRapidPay.Card.Infrastructure
         private static IServiceCollection AddQueries(this IServiceCollection services)
         {
             services.AddTransient<IQueryHandler<GetCardQuery, GetCardDTO>, GetCardQueryHandler>();
-            services.AddTransient<ICardRepository, CardRepository>();
+            services.AddTransient<IQueryHandler<GetPersonQuery, GetPersonDTO>, GetPersonQueryHandler>();
 
             return services;
         }
 
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddSingleton<ICardRepository, CardRepository>();
-            services.AddSingleton<IPersonRepository, PersonRepository>();
+            services.AddTransient<ICardRepository, CardRepository>();
+            services.AddTransient<IPersonRepository, PersonRepository>();
+
             return services;
         }
     }

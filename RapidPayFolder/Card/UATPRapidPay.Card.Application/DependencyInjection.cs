@@ -23,6 +23,8 @@ namespace UATPRapidPay.Card.Application
         private static IServiceCollection AddCommandHandlers(this IServiceCollection services)
         {
             services.AddTransient<ICommandHandler<CreateCardCommand>, CreateCardCommandHandler>();
+            services.AddTransient<ICommandHandler<CreatePersonCommand>, CreatePersonCommandHandler>();
+
             return services;
         }
 

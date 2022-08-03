@@ -1,11 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UATPRapidPay.Card.Application.DTO;
 
 namespace UATPRapidPay.Card.Infrastructure.Models
 {
     public class ReadPersonModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<ReadCardModel> Cards { get; set; }
+        public string Email { get; set; }
+
+        internal GetPersonDTO AsDto()
+        {
+            return new GetPersonDTO()
+            {
+                Id = Id,
+                Name = Name,
+            };
+        }
     }
 }

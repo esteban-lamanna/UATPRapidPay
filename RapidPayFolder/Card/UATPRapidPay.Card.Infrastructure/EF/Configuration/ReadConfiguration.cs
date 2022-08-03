@@ -12,27 +12,25 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
     {
         public void Configure(EntityTypeBuilder<ReadPersonModel> builder)
         {
-            //builder.ToTable("Persons");
-            //builder.HasKey(x => x.Id);
-            //builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
-            //builder.Property(x => x.Name).HasColumnName("Name").HasMaxLength(30).IsRequired();
-            //builder.HasMany(x => x.Cards).WithOne(c => c.Person);
+            builder.ToTable("Persons");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
+            builder.Property(x => x.Name).HasColumnName("Name").HasMaxLength(30).IsRequired();
+            builder.Property(x => x.Email).HasColumnName("Email").HasMaxLength(300).IsRequired();
         }
 
         public void Configure(EntityTypeBuilder<ReadCardModel> builder)
         {
-            //var dateOnlyConverter = new ValueConverter<DateOnly, DateTime>(
-            //      date => new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, DateTimeKind.Utc),
-            //      dt => DateOnly.FromDateTime(dt));
+            var dateOnlyConverter = new ValueConverter<DateOnly, DateTime>(
+                  date => new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, DateTimeKind.Utc),
+                  dt => DateOnly.FromDateTime(dt));
 
-            //builder.ToTable("Cards");
-            //builder.HasKey(x => x.Id);
-            //builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
-            //builder.Property(x => x.Number).HasColumnName("Number").HasMaxLength(16).IsRequired();
-            //builder.Property(x => x.Limit).HasColumnName("Limit").HasColumnType("decimal(8,2)").IsRequired();
-            //builder.Property(x => x.ExpirationDate).HasConversion(dateOnlyConverter).HasColumnName("ExpirationDate").IsRequired();
-            //builder.HasMany(d => d.ProductsBougth).WithOne(a => a.Card);
-            //builder.HasOne(a => a.Person).WithMany(a => a.Cards).HasForeignKey(a => a.IdPerson).HasConstraintName("FK_Cards_Persons").OnDelete(DeleteBehavior.Restrict);
+            builder.ToTable("Cards");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
+            builder.Property(x => x.Number).HasColumnName("Number").HasMaxLength(16).IsRequired();
+            builder.Property(x => x.Limit).HasColumnName("Limit").HasColumnType("decimal(8,2)").IsRequired();
+            builder.Property(x => x.ExpirationDate).HasConversion(dateOnlyConverter).HasColumnName("ExpirationDate").IsRequired();
         }
 
         public void Configure(EntityTypeBuilder<ReadPurchaseModel> builder)
