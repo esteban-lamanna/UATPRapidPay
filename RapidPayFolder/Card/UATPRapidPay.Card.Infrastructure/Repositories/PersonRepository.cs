@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Domain.Entities;
 using UATPRapidPay.Card.Domain.Repositories;
@@ -21,9 +23,9 @@ namespace UATPRapidPay.Card.Infrastructure.Repositories
             await _writeDbContext.SaveChangesAsync();
         }
 
-        public Task<Person> GetByIdAsync(Guid id)
+        public async Task<Person> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _writeDbContext.Set<Person>().SingleOrDefaultAsync(i=>i.Id == id);
         }
     }
 }

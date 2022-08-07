@@ -27,6 +27,7 @@ namespace UATPRapidPay.Card.Api.Models.Person
         {
             return new CreatePersonCommand()
             {
+                Id = request.Id,
                 Name = request.Name,
                 Email = request.Email
             };

@@ -7,17 +7,20 @@ namespace UATPRapidPay.Card.Domain.Entities
 {
     public class Card : AggregateRoot<Guid>
     {
-        public Card(CardNumber cardNumber,
+        public Card(Guid id, 
+                    CardNumber cardNumber,
                     Person person,
                     ExpirationDate expirationDate,
                     decimal limit)
         {
+            Id = id;
             CardNumber = cardNumber;
             Person = person;
             ExpirationDate = expirationDate;
             Limit = limit;
         }
 
+        //EF
         private Card()
         {
         }

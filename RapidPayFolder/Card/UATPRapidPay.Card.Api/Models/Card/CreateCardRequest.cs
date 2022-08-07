@@ -1,24 +1,13 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using UATPRapidPay.Card.Api.Attributes;
 using UATPRapidPay.Card.Application.Commands;
 
 namespace UATPRapidPay.Card.Api.Models.Card
 {
     public class CreateCardRequest
     {
-        [Required]
-        [NotEmpty]
-        public Guid Id { get; set; }
-
-        [Required]
-        [MaxLength(30)]
-        public string PersonName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [MaxLength(300)]
-        public string PersonEmail { get; set; }
+        public Guid PersonId { get; set; }
+        public Guid CardId { get; set; }
+        public decimal Limit { get; set; }
     }
 
     internal static class CreateCardRequestExtensions
@@ -27,9 +16,9 @@ namespace UATPRapidPay.Card.Api.Models.Card
         {
             return new CreateCardCommand()
             {
-                Id = request.Id,
-                PersonName = request.PersonName,
-                PersonEmail = request.PersonEmail
+                Id = request.CardId,
+                Limit = request.Limit,
+                PersonId = request.PersonId
             };
         }
     }
