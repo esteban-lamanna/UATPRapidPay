@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using UATPRapidPay.Card.Application.Commands;
 using UATPRapidPay.Card.Application.Commands.Handlers;
-using UATPRapidPay.Card.Application.Queries;
 using UATPRapidPay.Card.Application.Services;
 using UATPRapidPay.Shared.Commands;
 using UATPRapidPay.Shared.Queries;

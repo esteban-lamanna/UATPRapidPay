@@ -7,5 +7,6 @@ namespace UATPRapidPay.Card.Domain.Repositories
     {
         Task<Entities.Card> GetByNumberAsync(CardNumber cardNumber);
         Task CreateAsync(Entities.Card card);
+        Task<CardNumber> GetLastCardNumberAsync();
     }
 }

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using UATPRapidPay.Card.Domain.Entities;
 using UATPRapidPay.Card.Domain.ValueObjects;
 
@@ -29,7 +28,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
             builder.Property(x => x.Email).HasConversion(personEmailConverter).HasColumnName("Email").HasMaxLength(300).IsRequired();
 
             builder.Ignore(a => a.Cards);
-            builder.HasMany<Domain.Entities.Card>("_cards").WithOne(p=>p.Person).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany<Domain.Entities.Card>("_cards").WithOne(p => p.Person).OnDelete(DeleteBehavior.Cascade);
         }
 
         public void Configure(EntityTypeBuilder<Domain.Entities.Card> builder)
@@ -42,11 +41,13 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
                     e => e.Number,
                     s => new CardNumber(s));
 
+            var limitConverter = new ValueConverter<Limit, decimal>(e => e.Value, s => new Limit(s));
+
             builder.ToTable("Cards");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
             builder.Property(x => x.CardNumber).HasConversion(cardNumberConverter).HasColumnName("CardNumber").HasMaxLength(16).IsRequired();
-            builder.Property(x => x.Limit).HasColumnName("Limit").IsRequired().HasColumnType("decimal(8,2)");
+            builder.Property(x => x.Limit).HasConversion(limitConverter).HasColumnName("Limit").IsRequired().HasColumnType("decimal(8,2)");
             builder.Property(x => x.ExpirationDate).HasConversion(cardExpirationDateConverter).HasColumnName("ExpirationDate").IsRequired();
 
             builder.Ignore(a => a.ProductsBougth);

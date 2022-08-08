@@ -7,8 +7,8 @@ namespace UATPRapidPay.Card.Domain
     {
         public static IServiceCollection AddDomain(this IServiceCollection services)
         {
-            services.AddSingleton<ICardFactory, CardFactory>();
-            services.AddSingleton<ICardNumberFactory, CardNumberFactory>();
+            services.AddTransient<ICardFactory, CardFactory>();
+            services.AddTransient<ICardNumberFactory, CardNumberFactory>();
             services.AddSingleton<IPersonFactory, PersonFactory>();
 
             return services;

@@ -16,7 +16,6 @@ namespace UATPRapidPay.Card.Api.Models.Card
         {
             return new CreateCardCommand()
             {
-                Id = request.CardId,
                 Limit = request.Limit,
                 PersonId = request.PersonId
             };

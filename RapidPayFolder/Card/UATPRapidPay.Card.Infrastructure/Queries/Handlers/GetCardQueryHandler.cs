@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Application.DTO;
 using UATPRapidPay.Card.Application.Queries;
@@ -20,10 +21,15 @@ namespace UATPRapidPay.Card.Infrastructure.Queries.Handlers
 
         public async Task<GetCardDTO> HandleAsync(GetCardQuery query)
         {
-            var entity = await _readDbContext.Set<ReadCardModel>()
-                                             .SingleOrDefaultAsync(a=>a.Number == (string)query.CardNumber);
+            var entity = _readDbContext.Set<ReadCardModel>().AsQueryable();
 
-            return entity.AsDto();
+            if (query.Id.HasValue)
+                entity = entity.Where(a => a.Id == query.Id);
+
+            if (query.CardNumber != null)
+                entity = entity.Where(a => a.Number == (string)query.CardNumber);
+
+            return (await entity.SingleOrDefaultAsync())?.AsDto();
         }
     }
 }

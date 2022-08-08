@@ -25,6 +25,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
             modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Card", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 
@@ -58,6 +59,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
             modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Person", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 
@@ -84,6 +86,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Migrations
             modelBuilder.Entity("UATPRapidPay.Card.Domain.Entities.Purchase", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
 

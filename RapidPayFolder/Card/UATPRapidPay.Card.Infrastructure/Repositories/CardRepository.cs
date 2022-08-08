@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Domain.Repositories;
 using UATPRapidPay.Card.Domain.ValueObjects;
@@ -25,6 +27,14 @@ namespace UATPRapidPay.Card.Infrastructure.Repositories
         public Task<Domain.Entities.Card> GetByNumberAsync(CardNumber cardNumber)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<CardNumber> GetLastCardNumberAsync()
+        {
+            return await _writeDbContext.Set<Domain.Entities.Card>()
+                                              .OrderByDescending(c => c.CardNumber)
+                                              .Select(a => a.CardNumber)
+                                              .FirstOrDefaultAsync();
         }
     }
 }

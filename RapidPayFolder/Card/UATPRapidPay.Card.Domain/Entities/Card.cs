@@ -11,7 +11,7 @@ namespace UATPRapidPay.Card.Domain.Entities
                     CardNumber cardNumber,
                     Person person,
                     ExpirationDate expirationDate,
-                    decimal limit)
+                    Limit limit)
         {
             Id = id;
             CardNumber = cardNumber;
@@ -28,7 +28,7 @@ namespace UATPRapidPay.Card.Domain.Entities
         public CardNumber CardNumber { get; private set; }
         public Person Person { get; private set; }
         public ExpirationDate ExpirationDate { get; private set; }
-        public decimal Limit { get; private set; }
+        public Limit Limit { get; private set; }
         public IEnumerable<Purchase> ProductsBougth { get; private set; }
         private ICollection<Purchase> _productsBougth = new List<Purchase>();    
     }

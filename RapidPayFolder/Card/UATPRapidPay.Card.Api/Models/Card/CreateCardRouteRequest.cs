@@ -10,11 +10,6 @@ namespace UATPRapidPay.Card.Api.Models.Card
         [Required]
         [FromRoute]
         [NotEmpty]
-        public Guid CardId { get; set; }
-
-        [Required]
-        [FromRoute]
-        [NotEmpty]
         public Guid PersonId { get; set; }
     }
 }

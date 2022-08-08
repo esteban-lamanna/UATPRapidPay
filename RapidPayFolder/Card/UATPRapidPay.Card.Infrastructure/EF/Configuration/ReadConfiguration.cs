@@ -28,7 +28,7 @@ namespace UATPRapidPay.Card.Infrastructure.EF.Configuration
             builder.ToTable("Cards");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
-            builder.Property(x => x.Number).HasColumnName("Number").HasMaxLength(16).IsRequired();
+            builder.Property(x => x.Number).HasColumnName("CardNumber").HasMaxLength(16).IsRequired();
             builder.Property(x => x.Limit).HasColumnName("Limit").HasColumnType("decimal(8,2)").IsRequired();
             builder.Property(x => x.ExpirationDate).HasConversion(dateOnlyConverter).HasColumnName("ExpirationDate").IsRequired();
         }
