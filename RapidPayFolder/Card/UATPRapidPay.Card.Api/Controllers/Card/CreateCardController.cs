@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using UATPRapidPay.Card.Api.Attributes;
 using UATPRapidPay.Card.Api.Models.Card;
 using UATPRapidPay.Card.Application.Queries;
 using UATPRapidPay.Shared.Commands;
@@ -29,7 +27,7 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
 
         [Route("Person/{PersonId}/Card")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromRoute] CreateCardRouteRequest route, [FromBody] CreateCardRequest createCardRequest)
+        public async Task<IActionResult> Create([FromRoute] d route, [FromBody] CreateCardRequest createCardRequest)
         {
             var request = new CreateCardRequest()
             {
@@ -45,10 +43,6 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
             var queryCard = await _queryDispatcher.QueryAsync(new GetCardQuery() { Id = newId });
 
             return Ok(queryCard.CardNumber);
-            //return CreatedAtAction(actionName: nameof(GetCardController.Get),
-            //                       controllerName: nameof(GetCardController),
-            //                       new { },
-            //                       new { asd = 23 });
         }
     }
 }

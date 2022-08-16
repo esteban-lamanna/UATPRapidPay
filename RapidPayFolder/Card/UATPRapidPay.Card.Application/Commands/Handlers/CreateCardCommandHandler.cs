@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Application.Exceptions;
+using UATPRapidPay.Card.Domain.DomainEvents;
 using UATPRapidPay.Card.Domain.Factories;
 using UATPRapidPay.Card.Domain.Repositories;
 using UATPRapidPay.Shared.Commands;
+using UATPRapidPay.Shared.Services;
 
 namespace UATPRapidPay.Card.Application.Commands.Handlers
 {
@@ -12,14 +14,17 @@ namespace UATPRapidPay.Card.Application.Commands.Handlers
         private readonly ICardFactory _cardFactory;
         private readonly ICardRepository _cardRepository;
         private readonly IPersonRepository _personRepository;
+        private readonly IEventProcessor _eventProcessor;
 
         public CreateCardCommandHandler(ICardFactory cardFactory,
                                         ICardRepository cardRepository,
-                                        IPersonRepository personRepository)
+                                        IPersonRepository personRepository,
+                                        IEventProcessor eventProcessor)
         {
             _cardFactory = cardFactory;
             _cardRepository = cardRepository;
             _personRepository = personRepository;
+            _eventProcessor = eventProcessor;
         }
 
         public async Task HandleAsync(CreateCardCommand command)
@@ -34,6 +39,8 @@ namespace UATPRapidPay.Card.Application.Commands.Handlers
                                                  command.Limit);
 
             await _cardRepository.CreateAsync(card);
+
+            await _eventProcessor.ProcessAsync(card.Events);
         }
     }
 }

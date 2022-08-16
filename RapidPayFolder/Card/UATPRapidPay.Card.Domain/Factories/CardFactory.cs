@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using UATPRapidPay.Card.Domain.DomainEvents;
 using UATPRapidPay.Card.Domain.Entities;
 using UATPRapidPay.Card.Domain.ValueObjects;
 
@@ -24,7 +25,11 @@ namespace UATPRapidPay.Card.Domain.Factories
 
             var dateExpirationDate = DateOnly.FromDateTime(expiryDate);
 
-            return new Entities.Card(id, cardNumber, person, dateExpirationDate, limit);
+            var card = new Entities.Card(id, cardNumber, person, dateExpirationDate, limit);
+
+            card.AddEvent(new CardCreated(card.Id, card.Limit, card.Person.Id));
+
+            return card;
         }
     }
 }

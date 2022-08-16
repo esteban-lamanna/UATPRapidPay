@@ -24,9 +24,10 @@ namespace UATPRapidPay.Card.Infrastructure.Repositories
             await _writeDbContext.SaveChangesAsync();
         }
 
-        public Task<Domain.Entities.Card> GetByNumberAsync(CardNumber cardNumber)
+        public async Task<Domain.Entities.Card> GetByNumberAsync(CardNumber cardNumber)
         {
-            throw new NotImplementedException();
+            return await _writeDbContext.Set<Domain.Entities.Card>()
+                    .SingleOrDefaultAsync(c => c.CardNumber == cardNumber);
         }
 
         public async Task<CardNumber> GetLastCardNumberAsync()
