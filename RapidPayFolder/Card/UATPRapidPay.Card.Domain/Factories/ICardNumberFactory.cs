@@ -6,6 +6,6 @@ namespace UATPRapidPay.Card.Domain.Factories
 {
     public interface ICardNumberFactory
     {
-        Task<CardNumber> Generate(Person person);
+        Task<CardNumber> GenerateAsync(Person person);
     }
 }

@@ -15,12 +15,10 @@ namespace UATPRapidPay.Card.Domain.Factories
             _cardRepository = cardRepository;
         }
 
-        public async Task<CardNumber> Generate(Person person)
+        public async Task<CardNumber> GenerateAsync(Person person)
         {
             lock (_cardNumberLockObject)
             {
-                Task.Delay(1000).GetAwaiter().GetResult();
-
                 var lastNumber = _cardRepository.GetLastCardNumberAsync().GetAwaiter().GetResult();
 
                 if (lastNumber == null)

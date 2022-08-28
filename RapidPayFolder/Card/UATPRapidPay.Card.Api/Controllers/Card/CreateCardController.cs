@@ -27,7 +27,7 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
 
         [Route("Person/{PersonId}/Card")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromRoute] d route, [FromBody] CreateCardRequest createCardRequest)
+        public async Task<IActionResult> Create([FromRoute] CreateCardRouteRequest route, [FromBody] CreateCardRequest createCardRequest)
         {
             var request = new CreateCardRequest()
             {

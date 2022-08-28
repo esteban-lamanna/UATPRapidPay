@@ -17,11 +17,11 @@ namespace UATPRapidPay.Card.Domain.ValueObjects
         private static void ValidateFormat(string email)
         {
             if (string.IsNullOrEmpty(email))
-                throw new CardFormatException();
+                throw new EmailFormatException();
 
             var isValid = Regex.IsMatch(email, EMAIL_REGEX, RegexOptions.IgnoreCase);
             if(!isValid)
-                throw new CardFormatException();
+                throw new EmailFormatException();
         }
 
         public string Value { get; set; }

@@ -5,7 +5,7 @@ using UATPRapidPay.Card.Api.Attributes;
 
 namespace UATPRapidPay.Card.Api.Models.Card
 {
-    public class d
+    public class CreateCardRouteRequest
     {
         [Required]
         [FromRoute]
