@@ -8,6 +8,7 @@ using UATPRapidPay.Card.Infrastructure.EF;
 using UATPRapidPay.Card.Infrastructure.Events;
 using UATPRapidPay.Card.Infrastructure.Queries.Handlers;
 using UATPRapidPay.Card.Infrastructure.Repositories;
+using UATPRapidPay.Shared.Exceptions;
 using UATPRapidPay.Shared.Queries;
 using UATPRapidPay.Shared.Services;
 
@@ -22,6 +23,8 @@ namespace UATPRapidPay.Card.Infrastructure
             services.AddRepositories();
 
             services.AddEventProcessor();
+
+            services.AddTransient<IExceptionToResponseMapper, ExceptionToResponseMapper>();
 
             string? connection = configuration.GetConnectionString("ConnectionString");
 

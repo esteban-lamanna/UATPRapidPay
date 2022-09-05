@@ -12,15 +12,12 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
     [ApiController]
     public class CreateCardController : ControllerBase
     {
-        private readonly ILogger<CreateCardController> _logger;
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public CreateCardController(ILogger<CreateCardController> logger,
-                                    ICommandDispatcher commandDispatcher,
+        public CreateCardController(ICommandDispatcher commandDispatcher,
                                     IQueryDispatcher queryDispatcher)
         {
-            _logger = logger;
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
         }
@@ -42,7 +39,11 @@ namespace UATPRapidPay.Card.Api.Controllers.Card
 
             var queryCard = await _queryDispatcher.QueryAsync(new GetCardQuery() { Id = newId });
 
-            return Ok(queryCard.CardNumber);
+            return Ok(new CreateCardResponse()
+            {
+                CardNumber = queryCard.CardNumber,
+                CardId = newId
+            });
         }
     }
 }

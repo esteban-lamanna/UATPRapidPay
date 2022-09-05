@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 using UATPRapidPay.Shared.Exceptions;
@@ -7,30 +9,36 @@ namespace UATPRapidPay.Card.Api.Middlewares
 {
     public class ExceptionsMiddleware : IMiddleware
     {
+        private readonly IExceptionToResponseMapper _exceptionToResponseMapper;
+
+        public ExceptionsMiddleware(IExceptionToResponseMapper exceptionToResponseMapper)
+        {
+            _exceptionToResponseMapper = exceptionToResponseMapper;
+        }
+
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
             {
                 await next(context);
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                context.Response.StatusCode = 400;
+                var exceptionResponse = _exceptionToResponseMapper.Map(ex);
 
-                context.Response.Headers.Add("content-type", "application/json");
+                context.Response.StatusCode = (int)(exceptionResponse?.StatusCode ?? HttpStatusCode.BadRequest);
 
-                string json = JsonSerializer.Serialize(new { ex.Message });
+                var response = exceptionResponse?.Response;
 
-                await context.Response.WriteAsync(json);
-            }
-            catch (DomainException ex)
-            {
-                context.Response.StatusCode = 400;
+                if (response is null)
+                {
+                    await context.Response.WriteAsync(string.Empty);
+                    return;
+                }
 
-                context.Response.Headers.Add("content-type", "application/json");
+                context.Response.ContentType = "application/json";
 
-                string json = JsonSerializer.Serialize(new { ex.Message });
-
+                var json = JsonSerializer.Serialize(new { ex.Message });
                 await context.Response.WriteAsync(json);
             }
         }

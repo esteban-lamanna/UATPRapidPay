@@ -32,11 +32,10 @@ namespace UATPRapidPay.Card.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            // app.UseAuthorization();
             app.UseMiddleware<ExceptionsMiddleware>();
-
+     
+            app.UseRouting();            
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

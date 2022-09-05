@@ -20,7 +20,6 @@ namespace UATPRapidPay.Card.Presentation.API.Tests
         public async Task ReturnActionResult()
         {
             //arrange
-            var logger = new Mock<ILogger<CreateCardController>>();
             var commandDispatcher = new Mock<ICommandDispatcher>();
             var queryDispatcher = new Mock<IQueryDispatcher>();
             var expectedCardNumber = new CardNumber("1234567891234567");
@@ -32,11 +31,8 @@ namespace UATPRapidPay.Card.Presentation.API.Tests
                       CardNumber = expectedCardNumber
                   });
 
-            var controller = new CreateCardController(logger.Object,
-                                                      commandDispatcher.Object,
+            var controller = new CreateCardController(commandDispatcher.Object,
                                                       queryDispatcher.Object);
-
-
 
             //act
             var result = await controller.Create(new CreateCardRouteRequest(), new CreateCardRequest());

@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Api", "Ra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0666D542-3539-45ED-915F-898F86819C5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UATPRapidPay.Card.Domain.Tests", "RapidPayFolder\Card\tests\TestProject1\UATPRapidPay.Card.Domain.Tests.csproj", "{B96983CA-7167-4F79-9D07-C633A18C7881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Domain.Tests", "RapidPayFolder\Card\tests\TestProject1\UATPRapidPay.Card.Domain.Tests.csproj", "{B96983CA-7167-4F79-9D07-C633A18C7881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UATPRapidPay.Card.Presentation.API.Tests", "RapidPayFolder\Card\tests\UATPRapidPay.Card.Infrastructure.API.Tests\UATPRapidPay.Card.Presentation.API.Tests.csproj", "{9989F66E-80BA-4DCF-91B0-2CE73B332D49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UATPRapidPay.Card.Presentation.API.Tests", "RapidPayFolder\Card\tests\UATPRapidPay.Card.Infrastructure.API.Tests\UATPRapidPay.Card.Presentation.API.Tests.csproj", "{9989F66E-80BA-4DCF-91B0-2CE73B332D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UATPRapidPay.Card.Tests.EndToEnd", "RapidPayFolder\Card\tests\UATPRapidPay.Card.Tests.EndToEnd\UATPRapidPay.Card.Tests.EndToEnd.csproj", "{ADE87CC9-5D07-4ED8-AE00-9699F25571F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{9989F66E-80BA-4DCF-91B0-2CE73B332D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9989F66E-80BA-4DCF-91B0-2CE73B332D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9989F66E-80BA-4DCF-91B0-2CE73B332D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE87CC9-5D07-4ED8-AE00-9699F25571F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE87CC9-5D07-4ED8-AE00-9699F25571F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE87CC9-5D07-4ED8-AE00-9699F25571F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE87CC9-5D07-4ED8-AE00-9699F25571F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{0666D542-3539-45ED-915F-898F86819C5E} = {14CA818A-B881-4011-8B47-94790885D009}
 		{B96983CA-7167-4F79-9D07-C633A18C7881} = {0666D542-3539-45ED-915F-898F86819C5E}
 		{9989F66E-80BA-4DCF-91B0-2CE73B332D49} = {0666D542-3539-45ED-915F-898F86819C5E}
+		{ADE87CC9-5D07-4ED8-AE00-9699F25571F4} = {0666D542-3539-45ED-915F-898F86819C5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8D3BE76-1B62-465B-995B-33FAB680B505}
