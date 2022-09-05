@@ -38,7 +38,7 @@ namespace UATPRapidPay.Card.Api.Middlewares
 
                 context.Response.ContentType = "application/json";
 
-                var json = JsonSerializer.Serialize(new { ex.Message });
+                var json = JsonSerializer.Serialize(response);
                 await context.Response.WriteAsync(json);
             }
         }

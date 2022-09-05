@@ -7,7 +7,5 @@ namespace UATPRapidPay.Card.Domain.Exceptions
         internal CardFormatException() : base($"The card number format is incorrect.")
         {
         }
-
-        public override string Code { get => "100"; }
     }
 }
