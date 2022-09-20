@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zdFL5NLv6PesUyAltMi7Dzkty6Z1OB3uh8/PV9sZSVc=",
+  "Source": "UATPRapidPay.Card.Api",
+  "BasePath": "_content/UATPRapidPay.Card.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

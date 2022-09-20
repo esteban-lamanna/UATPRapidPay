@@ -1,0 +1,7 @@
+{
+  "UATPRapidPay.Card.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "E:\\Projects\\Personal\\UATPRapidPay\\RapidPay\\Card\\Presentation",
+  "UATPRapidPay.Card.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "E:\\Projects\\Personal\\UATPRapidPay\\RapidPay\\Card\\Application",
+  "UATPRapidPay.Card.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "E:\\Projects\\Personal\\UATPRapidPay\\RapidPay\\Card\\Domain",
+  "UATPRapidPay.Card.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "E:\\Projects\\Personal\\UATPRapidPay\\RapidPay\\Card\\Infrastructure",
+  "UATPRapidPay.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "E:\\Projects\\Personal\\UATPRapidPay\\RapidPay\\UATPRapidPay.Shared"
+}
