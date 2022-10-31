@@ -1,0 +1,17 @@
+/RapidPay/.vs
+/RapidPay/Card/Application/bin
+/RapidPay/Card/Application/obj
+/RapidPay/Card/Domain/obj
+/RapidPay/Card/Domain/bin
+/RapidPay/Card/Infrastructure/obj
+/RapidPay/Card/Infrastructure/bin
+/RapidPay/Card/Presentation/bin
+/RapidPay/Card/Presentation/obj
+/RapidPay/Card/Tests/EndToEnd/obj
+/RapidPay/Card/Tests/EndToEnd/bin
+/RapidPay/Card/Tests/Presentation/obj
+/RapidPay/Card/Tests/Presentation/bin
+/RapidPay/Card/Tests/UnitTests/obj
+/RapidPay/Card/Tests/UnitTests/bin
+/RapidPay/UATPRapidPay.Shared/obj
+/RapidPay/UATPRapidPay.Shared/bin
