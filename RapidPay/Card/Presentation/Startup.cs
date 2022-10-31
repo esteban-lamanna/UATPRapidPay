@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,25 @@ namespace UATPRapidPay.Card.Api
             services.AddScoped<ExceptionsMiddleware>();
 
             services.ConfigureServices(_configuration);
+
+            services.AddAuthentication(o =>
+            {
+                o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, o =>
+            {
+                
+                o.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                o.Authority = "https://localhost:5001";
+                o.ClientId = "RapidPayIDP";
+                o.ResponseType = "code";
+                o.UsePkce = false;
+                o.Scope.Add("openid");
+                o.Scope.Add("profile");
+                o.SaveTokens = true;
+                o.ClientSecret = "privatesecret";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,11 +52,11 @@ namespace UATPRapidPay.Card.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMiddleware<ExceptionsMiddleware>();
-     
-            app.UseRouting();            
-            
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

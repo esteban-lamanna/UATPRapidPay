@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using UATPRapidPay.Card.Api.Models.Card;
 using UATPRapidPay.Shared.Queries;
 
 namespace UATPRapidPay.Card.Api.Controllers.Card
 {
+    [Authorize]
     [ApiController]
     [Route("Card")]
     public class GetCardController : ControllerBase
