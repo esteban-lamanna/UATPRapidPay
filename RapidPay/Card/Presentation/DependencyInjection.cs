@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Web;
+using UATPRapidPay.Card.Api.Authorization;
 using UATPRapidPay.Card.Application;
 using UATPRapidPay.Card.Domain;
 using UATPRapidPay.Card.Infrastructure;
@@ -13,7 +15,6 @@ namespace UATPRapidPay.Card.Api
             services.AddApplication();
             services.AddDomain();
             services.AddInfrastructure(configuration);
-
             return services;
         }
     }
