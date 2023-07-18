@@ -16,7 +16,7 @@ namespace UATPRapidPay.Person.Api.Controllers.Person
             _queryDispatcher = queryDispatcher;
         }
 
-        [Route("{Id}")]
+        [Route("{Id}", Name = "GetPersonById")]
         [HttpGet("{Id}")]
         public async Task<IActionResult> Get([FromRoute] GetPersonRequest getPersonRequest)
         {

@@ -22,7 +22,7 @@ namespace UATPRapidPay.Card.Infrastructure.Queries.Handlers
             var entity = await _readDbContext.Set<ReadPersonModel>()
                                              .SingleOrDefaultAsync(a => a.Id == query.Id);
 
-            return entity.AsDto();
+            return entity?.AsDto();
         }
     }
 }

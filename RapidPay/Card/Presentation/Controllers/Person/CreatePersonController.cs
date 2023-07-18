@@ -35,10 +35,9 @@ namespace UATPRapidPay.Person.Api.Controllers.Person
                 Id = createPersonRequest.Id
             });
 
-            return CreatedAtAction(actionName: nameof(GetPersonController.Get),
-                                   controllerName: nameof(GetPersonController),
-                                   new { },
-                                   new { Id = dto.Id });
+            return CreatedAtRoute(routeName: "GetPersonById",
+                                  routeValues: new { dto.Id },
+                                  value: dto);
         }
     }
 }
